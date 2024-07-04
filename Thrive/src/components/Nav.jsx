@@ -21,12 +21,26 @@ const Nav = ({ user, handleLogOut }) => {
         <Link to="/" className="nav-link" onClick={handleLogOut}>
           Sign Out
         </Link>
-
         <Link to="/register" className="nav-link">
           Register
         </Link>
         <Link to="/signin" className="nav-link">
           Sign In
+        </Link>
+        <Link to="/Program" className="nav-link">
+          Programs
+        </Link>
+        <Link to="/MyRequest" className="nav-link">
+          My Request
+        </Link>
+        <Link to="/Profile" className="nav-link">
+          Profile
+        </Link>
+        <Link to="/AddPrograms" className="nav-link">
+          Add Programs
+        </Link>
+        <Link to="/Request" className="nav-link">
+          Request
         </Link>
       </nav>
     </header>
