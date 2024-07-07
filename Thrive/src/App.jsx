@@ -4,21 +4,45 @@ import About from "./pages/About"
 import Register from "./pages/Register"
 import SignIn from "./pages/SignIn"
 import Home from "./pages/Home"
+import UpdatePassword from "./pages/UpdatePassword"
+import { CheckSession } from "./services/Auth"
+import { useEffect, useState } from "react"
 
 function App() {
+  const [user, setUser] = useState(null)
+
+  const handleLogOut = () => {
+    setUser(null)
+    localStorage.clear()
+  }
+
+  const checkToken = async () => {
+    const user = await CheckSession()
+    setUser(user)
+  }
+
+  useEffect(() => {
+    const token = localStorage.getItem("token")
+    if (token) {
+      checkToken()
+    }
+  }, [])
+
   return (
     <>
       <div>
-        <Nav />
+        <Nav user={user} handleLogOut={handleLogOut} />
         <main>
           <Routes>
             <Route path="/about" element={<About />} />
 
             <Route path="/" element={<Home />} />
 
-            <Route path="/signin" element={<SignIn setUser={setUser} />} />
+            <Route path="/Signin" element={<SignIn setUser={setUser} />} />
 
-            <Route path="/register" element={<Register />} />
+            <Route path="/Register" element={<Register />} />
+
+            <Route path="/updatePassword" element={<UpdatePassword />} />
           </Routes>
         </main>
       </div>

@@ -1,7 +1,8 @@
 import { useState } from "react"
-import { RegisterUser } from "../services/Auth"
+// import { RegisterUser } from "../services/Auth"
 import { useNavigate } from "react-router-dom"
 import { useParams } from "react-router-dom"
+import { RegisterUser } from "../services/Auth"
 
 const Register = () => {
   let navigate = useNavigate()
@@ -56,7 +57,19 @@ const Register = () => {
       phoneNumber: formValues.phoneNumber,
       type: type,
     })
-    setFormValues(initValues)
+    setFormValues({
+      username: "",
+      firstName: "",
+      lastName: "",
+      birthDate: "",
+      cpr: "",
+      email: "",
+      password: "",
+      confirmPassword: "",
+      gender: "",
+      phoneNumber: "",
+      type: false,
+    })
     navigate("/signin")
   }
 
@@ -172,7 +185,11 @@ const Register = () => {
           <label htmlFor="gender" className="register">
             Gender
           </label>
-          <select name="gender" value={formData.gender} onChange={handleChange}>
+          <select
+            name="gender"
+            value={formValues.gender}
+            onChange={handleChange}
+          >
             <option value="">Select Gender</option>
             <option value="male">Male</option>
             <option value="female">Female</option>
@@ -188,7 +205,7 @@ const Register = () => {
             type="tel"
             name="phoneNumber"
             placeholder="phoneNumber"
-            value={formValues.confirmPassword}
+            value={formValues.phoneNumber}
             required
           />
         </div>
@@ -199,9 +216,13 @@ const Register = () => {
             !formValues.userName ||
             !formValues.firstName ||
             !formValues.lastName ||
+            !formValues.birthDate ||
+            !formValues.cpr ||
             !formValues.email ||
             !formValues.password ||
             !formValues.confirmPassword ||
+            !formValues.gender ||
+            !formValues.phoneNumber ||
             formValues.password !== formValues.confirmPassword
           }
           className="Button"
