@@ -196,7 +196,7 @@ const Register = () => {
         <button
           type="submit"
           disabled={
-            !formValues.username ||
+            !formValues.userName ||
             !formValues.firstName ||
             !formValues.lastName ||
             !formValues.email ||
