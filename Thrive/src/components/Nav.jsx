@@ -18,6 +18,10 @@ const Nav = ({ handleLogOut }) => {
           About Us
         </Link>
 
+        <Link to="/home" className="nav-link">
+          Home
+        </Link>
+
         <Link to="/" className="nav-link" onClick={handleLogOut}>
           Sign Out
         </Link>
