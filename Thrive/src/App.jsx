@@ -1,10 +1,11 @@
-import { Route, Routes } from 'react-router'
-import Nav from './components/Nav'
+import { Route, Routes } from "react-router"
+import Nav from "./components/Nav"
 
 import About from "./pages/About"
 import Register from "./pages/Register"
 import SignIn from "./pages/SignIn"
 import Home from "./pages/Home"
+import Program from "./pages/Program"
 import ProgramDetail from "./pages/ProgramDetail"
 import UpdatePassword from "./pages/UpdatePassword"
 import { CheckSession } from "./services/Auth"
@@ -24,7 +25,7 @@ function App() {
   }
 
   useEffect(() => {
-    const token = localStorage.getItem('token')
+    const token = localStorage.getItem("token")
     if (token) {
       checkToken()
     }
@@ -38,19 +39,13 @@ function App() {
         <main>
           <Routes>
             <Route path="/about" element={<About />} />
-
             <Route path="/" element={<Home />} />
-
             <Route path="/Signin" element={<SignIn setUser={setUser} />} />
-
             <Route path="/Register" element={<Register />} />
-            <Route path="/Programs" element={<Programs />} />
+            <Route path="/Programs" element={<Program />} />
             <Route path="/updatePassword" element={<UpdatePassword />} />
-
-            <Route path="/program/:ProgramId" element={<ProgramDetail />} />
-
-            <Route path="/chat" element={<Chat />} /> 
-
+            <Route path="/program/:programId" element={<ProgramDetail />} />
+            {/* <Route path="/chat" element={<Chat />} /> */}
           </Routes>
         </main>
       </div>
