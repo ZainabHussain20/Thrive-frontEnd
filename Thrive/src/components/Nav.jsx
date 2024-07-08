@@ -46,6 +46,12 @@ const Nav = ({ handleLogOut }) => {
         <Link to="/Request" className="nav-link">
           Request
         </Link>
+
+        <Link to="/chat" className="nav-link">
+          Chat
+        </Link>
+        
+        
       </nav>
     </header>
   )

@@ -10,6 +10,7 @@ import { CheckSession } from './services/Auth'
 import { useEffect, useState } from 'react'
 import Programs from './pages/Program'
 
+
 function App() {
   const [user, setUser] = useState(null)
 
@@ -46,6 +47,7 @@ function App() {
             <Route path="/Register" element={<Register />} />
             <Route path="/Programs" element={<Programs />} />
             <Route path="/updatePassword" element={<UpdatePassword />} />
+            <Route path="/chat" element={<Chat />} /> 
           </Routes>
         </main>
       </div>
