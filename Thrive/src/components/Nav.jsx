@@ -1,57 +1,40 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React from "react"
+import { Link } from "react-router-dom"
+import logo from "../assets/logo.svg"
 
-const Nav = ({ handleLogOut }) => {
+const Nav = ({ user, handleLogOut }) => {
   return (
     <header>
-      <div className="header">
-        {/* <Link to="/home">
-          <img
-            className="logo"
-            src=""
-            alt="Logo"
-          />
-        </Link> */}
-      </div>
       <nav className="nav-links">
-        <Link to="/About" className="nav-link">
-          About Us
+        <Link to="/">
+          <img src={logo} />
         </Link>
-
-        <Link to="/home" className="nav-link">
-          Home
-        </Link>
-
-        <Link to="/" className="nav-link" onClick={handleLogOut}>
-          Sign Out
-        </Link>
-        <Link to="/register" className="nav-link">
-          Register
-        </Link>
-        <Link to="/signin" className="nav-link">
-          Sign In
-        </Link>
-        <Link to="/Programs" className="nav-link">
-          Programs
-        </Link>
-        <Link to="/MyRequest" className="nav-link">
-          My Request
-        </Link>
-        <Link to="/Profile" className="nav-link">
-          Profile
-        </Link>
-        <Link to="/AddPrograms" className="nav-link">
-          Add Programs
-        </Link>
-        <Link to="/Request" className="nav-link">
-          Request
-        </Link>
-
-        <Link to="/chat" className="nav-link">
-          Chat
-        </Link>
-        
-        
+        <Link to="/">Home</Link>
+        {user ? (
+          <>
+            {user.type === "Admin" ? (
+              <>
+                <Link to="/addProgram">Add Programs</Link>
+                <Link to="/Request">Request</Link>
+              </>
+            ) : (
+              <>
+                <Link to="/Programs">Programs</Link>
+                <Link to="/MyRequest">My Program</Link>
+                <Link to="/Profile">Profile</Link>
+                <Link to="/chat">Chat</Link>
+              </>
+            )}
+            <Link to="/" onClick={handleLogOut}>
+              Sign Out
+            </Link>
+          </>
+        ) : (
+          <>
+            <Link to="/About">About Us</Link>
+            <Link to="/signin">Sign In</Link>
+          </>
+        )}
       </nav>
     </header>
   )

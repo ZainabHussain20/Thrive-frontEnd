@@ -1,5 +1,5 @@
 import { useState } from "react"
-// import { SignInUser } from "../services/Auth"
+import { SignInUser } from "../services/Auth"
 import { useNavigate } from "react-router-dom"
 import { Link } from "react-router-dom"
 
@@ -18,15 +18,12 @@ const SignIn = ({ setUser }) => {
     const payload = await SignInUser(formValues)
     setFormValues(initialState)
     setUser(payload)
-    if (payload.type) {
-      navigate("/user")
-    } else {
-      navigate("/admin")
-    }
+    alert("Welcome!")
+    navigate("/")
   }
 
   return (
-    <div className="signin">
+    <div className="forms">
       <form onSubmit={handleSubmit}>
         <div className="input-wrapper">
           <label htmlFor="userName" className="register">
@@ -36,7 +33,7 @@ const SignIn = ({ setUser }) => {
             onChange={handleChange}
             name="userName"
             type="text"
-            placeholder=" please enter your username"
+            placeholder="please enter your username"
             value={formValues.userName}
             required
           />
@@ -69,15 +66,10 @@ const SignIn = ({ setUser }) => {
           </Link>
           <hr />
           <div className="font">Don't have an accout?</div>
-          <div className="felxSignin">
-            <Link to="/register/user">
-              <h6 className="color"> Register as a user</h6>
-            </Link>
-            <h5>OR </h5>
-            <Link to="/register/admin">
-              <h6 className="color"> Register as an admin</h6>
-            </Link>
-          </div>
+          <Link to="/register">
+            <br />
+            <div className="color"> Register Now!</div>
+          </Link>
         </div>
       </div>
     </div>
