@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router"
 import Nav from "./components/Nav"
-// import Reviews from "./components/Reviews"
+
 import About from "./pages/About"
 import Register from "./pages/Register"
 import SignIn from "./pages/SignIn"
@@ -33,7 +33,7 @@ function App() {
     <>
       <div>
         <Nav user={user} handleLogOut={handleLogOut} />
-        {/* <Reviews /> */}
+
         <main>
           <Routes>
             <Route path="/about" element={<About />} />
