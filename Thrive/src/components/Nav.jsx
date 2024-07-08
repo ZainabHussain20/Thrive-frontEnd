@@ -1,5 +1,5 @@
-import React from "react"
-import { Link } from "react-router-dom"
+import React from 'react'
+import { Link } from 'react-router-dom'
 
 const Nav = ({ handleLogOut }) => {
   return (
@@ -31,7 +31,7 @@ const Nav = ({ handleLogOut }) => {
         <Link to="/signin" className="nav-link">
           Sign In
         </Link>
-        <Link to="/Program" className="nav-link">
+        <Link to="/Programs" className="nav-link">
           Programs
         </Link>
         <Link to="/MyRequest" className="nav-link">
