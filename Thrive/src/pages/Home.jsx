@@ -1,20 +1,17 @@
-
 import axios from "axios"
 import { useEffect, useState } from "react"
-import { BASE_URL } from "../services/api"
-import Review from "../components/Reviews"
-
+import FetchReview from "../components/FetchReview"
+import Client from "../services/api"
 
 const Home = () => {
   const [reviews, setReviews] = useState([])
-  // let { programId } = useParams()
 
   const getReviews = async () => {
     try {
-      const res = await axios.get(`${BASE_URL}/programs/reviews`)
+      const res = await Client.get(`programs/reviews`)
       setReviews(res.data)
     } catch (error) {
-      console.error('Failed to fetch reviews:', error)
+      console.error("Failed to fetch reviews:", error)
     }
   }
 
@@ -25,11 +22,15 @@ const Home = () => {
   return (
     <div className="homepage">
       <h1>Latest Reviews</h1>
-      <ul>
-        {reviews.map((review) => (
-          <Review key={review.id} review={review} />
-        ))}
-      </ul>
+      {reviews.map((review) => (
+        <FetchReview
+          key={review._id}
+          id={review._id}
+          content={review.content}
+          program={review.program}
+          rating={review.rating}
+        />
+      ))}
     </div>
   )
 }
