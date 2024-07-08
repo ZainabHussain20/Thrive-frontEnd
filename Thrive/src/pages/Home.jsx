@@ -1,7 +1,9 @@
+
 import axios from "axios"
 import { useEffect, useState } from "react"
 import { BASE_URL } from "../services/api"
 import Review from "../components/Reviews"
+
 
 const Home = () => {
   const [reviews, setReviews] = useState([])
@@ -12,7 +14,7 @@ const Home = () => {
       const res = await axios.get(`${BASE_URL}/programs/reviews`)
       setReviews(res.data)
     } catch (error) {
-      console.error("Failed to fetch reviews:", error)
+      console.error('Failed to fetch reviews:', error)
     }
   }
 
