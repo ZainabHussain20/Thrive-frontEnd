@@ -1,6 +1,7 @@
 import React from "react"
 const profileCard = ({ profile }) => {
-  const { userName, cpr, nationality, gender, email, phoneNumber } = profile
+  const { userName, birthDate, nationality, gender, email, phoneNumber } =
+    profile
 
   return (
     <div className="profileCard">
@@ -11,8 +12,8 @@ const profileCard = ({ profile }) => {
       </p>
 
       <p>
-        <strong>cpr:</strong>
-        {cpr}
+        <strong>birthDate:</strong>
+        {birthDate}
       </p>
 
       <p>
