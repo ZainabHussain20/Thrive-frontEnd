@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import Client from "../services/api"
-import { Rating } from "@mui/material"
+// import { Rating } from "@mui/material"
 
 const Review = ({ reviews, programId }) => {
   const initialState = { reviewText: "", reviewRating: 0, userId: "" }
@@ -31,7 +31,7 @@ const Review = ({ reviews, programId }) => {
   const handleSubmit = async (e) => {
     e.preventDefault()
     const response = await Client.post(
-      `/home/${programId}/reviews/${userId}`,
+      `/programs/${programId}/reviews/${userId}/`,
       formValues
     )
     const newReview = {
@@ -47,7 +47,7 @@ const Review = ({ reviews, programId }) => {
 
   const handleDelete = async (reviewId) => {
     try {
-      await Client.delete(`/home/${programId}/reviews/${reviewId}`)
+      await Client.delete(`/programs/${programId}/reviews/${reviewId}`)
       setReviewList(reviewList.filter((review) => review._id !== reviewId))
     } catch (error) {
       console.error("Failed to delete review:", error)
