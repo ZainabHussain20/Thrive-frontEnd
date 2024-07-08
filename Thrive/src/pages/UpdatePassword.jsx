@@ -25,7 +25,7 @@ const UpdatePassword = () => {
   }
 
   return (
-    <div className="signin">
+    <div className="forms">
       <form onSubmit={handleSubmit}>
         <div className="input-wrapper">
           <label htmlFor="userName" className="label">

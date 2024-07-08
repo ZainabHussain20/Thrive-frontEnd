@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router"
+import "./App.css"
 import Nav from "./components/Nav"
-
 import About from "./pages/About"
 import Register from "./pages/Register"
 import SignIn from "./pages/SignIn"
@@ -8,6 +8,8 @@ import Home from "./pages/Home"
 import Program from "./pages/Program"
 import ProgramDetail from "./pages/ProgramDetail"
 import UpdatePassword from "./pages/UpdatePassword"
+import Reviews from "./components/Reviews"
+import AddProgram from "./components/AddProgram"
 import { CheckSession } from "./services/Auth"
 import { useEffect, useState } from "react"
 
@@ -43,8 +45,10 @@ function App() {
             <Route path="/Signin" element={<SignIn setUser={setUser} />} />
             <Route path="/Register" element={<Register />} />
             <Route path="/Programs" element={<Program />} />
+            <Route path="/addProgram" element={<AddProgram />} />
             <Route path="/updatePassword" element={<UpdatePassword />} />
             <Route path="/program/:programId" element={<ProgramDetail />} />
+            <Route path="/reviews/:userId" element={<Reviews />} />
             {/* <Route path="/chat" element={<Chat />} /> */}
           </Routes>
         </main>
