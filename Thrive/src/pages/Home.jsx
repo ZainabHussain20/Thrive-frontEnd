@@ -1,8 +1,10 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
+import { BASE_URL } from "../services/api"
 
 const Home = () => {
   const [reviews, setReviews] = useState([])
+  // let { programId } = useParams()
 
   const getReviews = async () => {
     try {

@@ -5,6 +5,7 @@ import About from "./pages/About"
 import Register from "./pages/Register"
 import SignIn from "./pages/SignIn"
 import Home from "./pages/Home"
+import ProgramDetail from "./pages/ProgramDetail"
 import UpdatePassword from "./pages/UpdatePassword"
 import { CheckSession } from "./services/Auth"
 import { useEffect, useState } from "react"
@@ -45,6 +46,7 @@ function App() {
             <Route path="/Register" element={<Register />} />
 
             <Route path="/updatePassword" element={<UpdatePassword />} />
+            <Route path="/program/:ProgramId" element={<ProgramDetail />} />
           </Routes>
         </main>
       </div>
