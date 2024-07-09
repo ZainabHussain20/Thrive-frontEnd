@@ -1,12 +1,10 @@
 import ProgramCard from '../components/ProgramCard'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
-import { useParams } from 'react-router-dom'
 import { BASE_URL } from '../services/api'
 
 const Programs = () => {
   const [programs, setPrograms] = useState([])
-  const { id } = useParams()
 
   useEffect(() => {
     const getPrograms = async () => {
@@ -22,7 +20,7 @@ const Programs = () => {
   }, [])
 
   return (
-    <div className="mainCard">
+    <div className="child-content">
       {programs.length > 0 ? (
         programs.map((program) => (
           <ProgramCard key={program._id} id={program._id} name={program.name} />
