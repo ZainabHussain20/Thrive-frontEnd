@@ -13,7 +13,8 @@ import ProfileCard from './components/ProfileCard'
 import Reviews from './components/Reviews'
 import AdminPrograms from './pages/AdminPrograms'
 import AddProgram from './components/AddProgram'
-import { CheckSession } from './services/Auth'
+import Cart from "./components/Cart"
+import { CheckSession } from "./services/Auth"
 import { useEffect, useState } from 'react'
 
 function App() {
@@ -54,10 +55,12 @@ function App() {
             />
             <Route path="/addProgram" element={<AddProgram />} />
             <Route path="/updatePassword" element={<UpdatePassword />} />
+            <Route path="/program/:programId" element={<ProgramDetail />} />
+            <Route path="/reviews/:userId" element={<Reviews />} />
+            <Route path="/registration/:userId/cart/" element={<Cart />} />
             <Route path="/program/:ProgramId" element={<ProgramDetail />} />
             <Route path="/Profile" element={<Profile />} />
             <Route path="/Profile/:userId/edit" element={<ProfileCard />} />
-            {/* <Route path="/chat" element={<Chatbot />} /> Add this route */}
           </Routes>
         </main>
       </div>
