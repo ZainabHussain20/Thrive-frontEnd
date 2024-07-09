@@ -13,6 +13,8 @@ import Reviews from "./components/Reviews"
 import Chatbot from "./components/chat"
 import AddProgram from "./components/AddProgram"
 import ProfileCard from "./components/ProfileCard"
+import AdminRequest from './components/AdminRequest'
+import MyRequest from './pages/MyRequest'
 import { CheckSession } from "./services/Auth"
 import { useEffect, useState } from "react"
 
@@ -53,7 +55,9 @@ function App() {
             <Route path="/program/:ProgramId" element={<ProgramDetail />} />
             <Route path="/Profile" element={<Profile />} />
             <Route path="/Profile/:userId/edit" element={<ProfileCard />} />
-            <Route path="/chat" element={<Chatbot />} /> {/* Add this route */}
+            <Route path="/Request" element={<AdminRequest />} />
+            <Route path="/MyRequest" element={<MyRequest userId={user?._id} />} />
+            <Route path="/chat" element={<Chatbot />} /> 
 
           </Routes>
         </main>
