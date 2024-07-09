@@ -1,22 +1,22 @@
-import { Route, Routes } from 'react-router'
-import './App.css'
-import Nav from './components/Nav'
-import About from './pages/About'
-import Register from './pages/Register'
-import SignIn from './pages/SignIn'
-import Home from './pages/Home'
-import Program from './pages/Program'
-import ProgramDetail from './pages/ProgramDetail'
+import { Route, Routes } from "react-router"
+import "./App.css"
+import Nav from "./components/Nav"
+import About from "./pages/About"
+import Register from "./pages/Register"
+import SignIn from "./pages/SignIn"
+import Home from "./pages/Home"
+import Program from "./pages/Program"
+import ProgramDetail from "./pages/ProgramDetail"
 import Profile from "./pages/Profile"
-import UpdatePassword from './pages/UpdatePassword'
-import Reviews from './components/Reviews'
-import AdminPrograms from './pages/AdminPrograms'
-import AddProgram from './components/AddProgram'
-import { CheckSession } from './services/Auth'
-import { useEffect, useState } from 'react'
+import UpdatePassword from "./pages/UpdatePassword"
+import Reviews from "./components/Reviews"
+import AdminPrograms from "./pages/AdminPrograms"
+import MyRequest from "./pages/MyRequest"
+import AddProgram from "./components/AddProgram"
+import ProfileCard from "./components/ProfileCard"
 
-
-
+import { CheckSession } from "./services/Auth"
+import { useEffect, useState } from "react"
 
 function App() {
   const [user, setUser] = useState(null)
@@ -32,7 +32,7 @@ function App() {
   }
 
   useEffect(() => {
-    const token = localStorage.getItem('token')
+    const token = localStorage.getItem("token")
     if (token) {
       checkToken()
     }
@@ -56,11 +56,11 @@ function App() {
             />
             <Route path="/addProgram" element={<AddProgram />} />
             <Route path="/updatePassword" element={<UpdatePassword />} />
-            <Route path="/program/:ProgramId" element={<ProgramDetail />} />
+            <Route path="/program/:programId" element={<ProgramDetail />} />
             <Route path="/Profile" element={<Profile />} />
+            <Route path="/MyRequest" element={<MyRequest />} />
             <Route path="/Profile/:userId/edit" element={<ProfileCard />} />
-            <Route path="/chat" element={<Chatbot />} /> {/* Add this route */}
-
+            {/* <Route path="/chat" element={<Chatbot />} /> Add this route */}
           </Routes>
         </main>
       </div>

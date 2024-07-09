@@ -5,7 +5,13 @@ const ProgramRequest = ({ request }) => {
     <div className="request-item">
       <p>Program ID: {request.programId}</p>
       <p>Status: {request.status}</p>
-      <h2>My Requests</h2>
+    </div>
+  )
+}
+
+const ProgramRequests = ({ userRequests }) => {
+  return (
+    <div className="requests-container">
       {userRequests.map((request, index) => (
         <ProgramRequest key={index} request={request} />
       ))}
@@ -13,4 +19,4 @@ const ProgramRequest = ({ request }) => {
   )
 }
 
-export default ProgramRequest
+export default ProgramRequests

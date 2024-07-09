@@ -1,11 +1,15 @@
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import Client from "../services/api"
+import axios from "axios"
+import { BASE_URL } from "../services/api"
 
 const ProgramDetails = () => {
   const [programDetails, setProgramDetails] = useState({})
   let { programId } = useParams()
   const [userRequests, setUserRequests] = useState([])
+  const [requests, setRequests] = useState([])
+  const [status, setStatus] = useState([])
 
   useEffect(() => {
     const getProgramDetails = async () => {
@@ -30,6 +34,16 @@ const ProgramDetails = () => {
       }
 
       setUserRequests([...userRequests, newRequest])
+      const userId = localStorage.getItem("userId")
+      console.log(`user id: ${userId}`)
+      const newProgram = await axios.post(
+        `${BASE_URL}/registration/${userId}/${programId}`,
+        newRequest
+      )
+      setRequests((prevRequests) => [...prevRequests, newProgram])
+      setStatus({
+        status: "pending",
+      })
     } catch (error) {
       console.error("Error registering for program:", error)
     }

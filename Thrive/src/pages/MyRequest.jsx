@@ -1,5 +1,5 @@
 import React from "react"
-import ProgramRequests from "./ProgramRequests"
+import ProgramRequest from "../components/ProgramsRequest"
 
 const MyRequests = () => {
   const userRequests = []
@@ -7,7 +7,7 @@ const MyRequests = () => {
   return (
     <div>
       <h1>My Requests</h1>
-      <ProgramRequests userRequests={userRequests} />
+      <ProgramRequest userRequests={userRequests} />
     </div>
   )
 }
