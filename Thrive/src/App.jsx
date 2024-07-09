@@ -6,6 +6,7 @@ import Register from "./pages/Register"
 import SignIn from "./pages/SignIn"
 import Home from "./pages/Home"
 import Program from "./pages/Program"
+import Profile from "./pages/Profile"
 import ProgramDetail from "./pages/ProgramDetail"
 import UpdatePassword from "./pages/UpdatePassword"
 import Reviews from "./components/Reviews"
@@ -47,9 +48,8 @@ function App() {
             <Route path="/Programs" element={<Program />} />
             <Route path="/addProgram" element={<AddProgram />} />
             <Route path="/updatePassword" element={<UpdatePassword />} />
-            <Route path="/program/:programId" element={<ProgramDetail />} />
-            <Route path="/reviews/:userId" element={<Reviews />} />
-            {/* <Route path="/chat" element={<Chat />} /> */}
+            <Route path="/program/:ProgramId" element={<ProgramDetail />} />
+            <Route path="/Profile" element={<Profile />} />
           </Routes>
         </main>
       </div>

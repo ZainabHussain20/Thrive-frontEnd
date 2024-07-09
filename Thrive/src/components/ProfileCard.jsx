@@ -6,35 +6,17 @@ const profileCard = ({ profile }) => {
   return (
     <div className="profileCard">
       <h2>My Profile</h2>
-      <p>
-        <strong>userName:</strong>
-        {userName}
-      </p>
+      <p>userName: {userName}</p>
 
-      <p>
-        <strong>birthDate:</strong>
-        {birthDate}
-      </p>
+      <p>birthDate: {birthDate}</p>
 
-      <p>
-        <strong>nationality:</strong>
-        {nationality}
-      </p>
+      <p>nationality: {nationality}</p>
 
-      <p>
-        <strong>gender:</strong>
-        {gender}
-      </p>
+      <p>gender: {gender}</p>
 
-      <p>
-        <strong>email:</strong>
-        {email}
-      </p>
+      <p>email: {email}</p>
 
-      <p>
-        <strong>phoneNumber:</strong>
-        {phoneNumber}
-      </p>
+      <p>phoneNumber: {phoneNumber}</p>
     </div>
   )
 }
