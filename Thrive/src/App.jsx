@@ -10,6 +10,7 @@ import Profile from "./pages/Profile"
 import ProgramDetail from "./pages/ProgramDetail"
 import UpdatePassword from "./pages/UpdatePassword"
 import Reviews from "./components/Reviews"
+import Chatbot from "./components/chat"
 import AddProgram from "./components/AddProgram"
 import ProfileCard from "./components/ProfileCard"
 import { CheckSession } from "./services/Auth"
@@ -52,6 +53,8 @@ function App() {
             <Route path="/program/:ProgramId" element={<ProgramDetail />} />
             <Route path="/Profile" element={<Profile />} />
             <Route path="/Profile/:userId/edit" element={<ProfileCard />} />
+            <Route path="/chat" element={<Chatbot />} /> {/* Add this route */}
+
           </Routes>
         </main>
       </div>
