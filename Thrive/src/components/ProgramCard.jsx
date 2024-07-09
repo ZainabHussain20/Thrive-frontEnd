@@ -1,8 +1,8 @@
-import { Link } from 'react-router-dom'
+import { Link } from "react-router-dom"
 
 const ProgramCard = ({ id, name }) => {
   return (
-    <Link to={`/programs/${id}`}>
+    <Link to={`/program/${id}`}>
       <div>
         <h3>{name}</h3>
         <p>Course Details</p>

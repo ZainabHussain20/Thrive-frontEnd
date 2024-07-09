@@ -1,5 +1,4 @@
-import { useState } from "react"
-// import { RegisterUser } from "../services/Auth"
+import React, { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { useParams } from "react-router-dom"
 import { RegisterUser } from "../services/Auth"
@@ -20,7 +19,7 @@ const Register = () => {
     confirmPassword: "",
     gender: "",
     phoneNumber: "",
-    type: "",
+    type: "user",
   }
 
   const [formValues, setFormValues] = useState(initValues)
@@ -57,29 +56,14 @@ const Register = () => {
       phoneNumber: formValues.phoneNumber,
       type: type,
     })
-    setFormValues({
-      username: "",
-      firstName: "",
-      lastName: "",
-      birthDate: "",
-      cpr: "",
-      email: "",
-      password: "",
-      confirmPassword: "",
-      gender: "",
-      phoneNumber: "",
-      type: false,
-    })
+    setFormValues(initValues)
     navigate("/signin")
   }
 
   return (
-    <div className="signin">
+    <div className="forms">
       <form onSubmit={handleSubmit}>
         <div className="input-wrapper">
-          <label htmlFor="userName" className="register">
-            Username
-          </label>
           <input
             onChange={handleChange}
             name="userName"
@@ -90,9 +74,6 @@ const Register = () => {
           />
         </div>
         <div className="input-wrapper">
-          <label htmlFor="firstName" className="register">
-            First Name
-          </label>
           <input
             onChange={handleChange}
             name="firstName"
@@ -103,9 +84,6 @@ const Register = () => {
           />
         </div>
         <div className="input-wrapper">
-          <label htmlFor="lastName" className="register">
-            Last Name
-          </label>
           <input
             onChange={handleChange}
             name="lastName"
@@ -116,35 +94,26 @@ const Register = () => {
           />
         </div>
         <div className="input-wrapper">
-          <label htmlFor="birthDate" className="register">
-            BirthDate
-          </label>
           <input
             onChange={handleChange}
             name="birthDate"
             type="date"
-            placeholder="date"
+            placeholder="Birth Date"
             value={formValues.birthDate}
             required
           />
         </div>
         <div className="input-wrapper">
-          <label htmlFor="cpr" className="regisre">
-            cpr
-          </label>
           <input
             onChange={handleChange}
             name="cpr"
             type="text"
-            placeholder="cpr"
+            placeholder="CPR"
             value={formValues.cpr}
             required
           />
         </div>
         <div className="input-wrapper">
-          <label htmlFor="email" className="register">
-            Email
-          </label>
           <input
             onChange={handleChange}
             name="email"
@@ -155,36 +124,37 @@ const Register = () => {
           />
         </div>
         <div className="input-wrapper">
-          <label htmlFor="password" className="register">
-            Password
-          </label>
           <input
             onChange={handleChange}
             type="password"
             name="password"
-            placeholder="password"
+            placeholder="Password"
             value={formValues.password}
             required
           />
         </div>
         <div className="input-wrapper">
-          <label htmlFor="confirmPassword" className="register">
-            Confirm Password
-          </label>
           <input
             onChange={handleChange}
             type="password"
             name="confirmPassword"
-            placeholder="confirmPassword"
+            placeholder="Confirm Password"
             value={formValues.confirmPassword}
             required
           />
         </div>
 
         <div className="input-wrapper">
-          <label htmlFor="gender" className="register">
-            Gender
-          </label>
+          <input
+            onChange={handleChange}
+            type="tel"
+            name="phoneNumber"
+            placeholder="Phone Number"
+            value={formValues.phoneNumber}
+            required
+          />
+        </div>
+        <div className="input-wrapper">
           <select
             name="gender"
             value={formValues.gender}
@@ -195,21 +165,6 @@ const Register = () => {
             <option value="female">Female</option>
           </select>
         </div>
-
-        <div className="input-wrapper">
-          <label htmlFor="phoneNumber" className="register">
-            phone Number
-          </label>
-          <input
-            onChange={handleChange}
-            type="tel"
-            name="phoneNumber"
-            placeholder="phoneNumber"
-            value={formValues.phoneNumber}
-            required
-          />
-        </div>
-
         <button
           type="submit"
           disabled={
@@ -225,7 +180,6 @@ const Register = () => {
             !formValues.phoneNumber ||
             formValues.password !== formValues.confirmPassword
           }
-          className="Button"
         >
           Signup
         </button>
