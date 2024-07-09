@@ -1,3 +1,13 @@
+
+
+
+
+import MyRequest from "./pages/MyRequest"
+
+import ProfileCard from "./components/ProfileCard"
+
+
+
 import { Route, Routes } from 'react-router'
 import './App.css'
 import Nav from './components/Nav'
@@ -17,6 +27,7 @@ import Cart from "./components/Cart"
 import { CheckSession } from "./services/Auth"
 import { useEffect, useState } from 'react'
 
+
 function App() {
   const [user, setUser] = useState(null)
 
@@ -31,7 +42,7 @@ function App() {
   }
 
   useEffect(() => {
-    const token = localStorage.getItem('token')
+    const token = localStorage.getItem("token")
     if (token) {
       checkToken()
     }
@@ -55,12 +66,15 @@ function App() {
             />
             <Route path="/addProgram" element={<AddProgram />} />
             <Route path="/updatePassword" element={<UpdatePassword />} />
-            <Route path="/program/:programId" element={<ProgramDetail />} />
+
             <Route path="/reviews/:userId" element={<Reviews />} />
             <Route path="/registration/:userId/cart/" element={<Cart />} />
             <Route path="/program/:ProgramId" element={<ProgramDetail />} />
+
             <Route path="/Profile" element={<Profile />} />
+            <Route path="/MyRequest" element={<MyRequest />} />
             <Route path="/Profile/:userId/edit" element={<ProfileCard />} />
+
           </Routes>
         </main>
       </div>
