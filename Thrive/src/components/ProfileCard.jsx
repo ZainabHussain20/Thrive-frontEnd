@@ -1,12 +1,8 @@
 import React from "react"
-const profileCard = ({
-  userName,
-  birthDate,
-  nationality,
-  gender,
-  email,
-  phoneNumber,
-}) => {
+const profileCard = ({ profile }) => {
+  const { userName, birthDate, nationality, gender, email, phoneNumber } =
+    profile
+
   return (
     <div className="profileCard">
       <h2>My Profile</h2>

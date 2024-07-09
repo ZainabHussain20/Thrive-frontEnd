@@ -3,7 +3,7 @@ import ProfileCard from "../components/ProfileCard"
 
 const Profile = () => {
   const userProfile = {
-    userName: "",
+    name: "",
     birthDate: "",
     nationality: "",
     gender: "",
@@ -19,10 +19,10 @@ const Profile = () => {
   }
 
   const handleChange = (e) => {
-    const { userName, value } = e.target
+    const { name, value } = e.target
     setProfile((prevProfile) => ({
       ...prevProfile,
-      [userName]: value,
+      [name]: value,
     }))
   }
 
@@ -43,11 +43,11 @@ const Profile = () => {
       ) : (
         <form onSubmit={handleSubmit}>
           <label>
-            userName:
+            Name:
             <input
               type="text"
-              name="userName"
-              value={profile.userName}
+              name="name"
+              value={profile.name}
               onChange={handleChange}
             />
           </label>
