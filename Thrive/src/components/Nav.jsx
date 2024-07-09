@@ -15,6 +15,7 @@ const Nav = ({ user, handleLogOut }) => {
             {user.type === 'Admin' ? (
               <>
                 <Link to="/addProgram">Add Programs</Link>
+                <Link to="/adminPrograms">Programs</Link>
                 <Link to="/Request">Request</Link>
               </>
             ) : (
