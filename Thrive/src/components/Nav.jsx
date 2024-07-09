@@ -50,8 +50,6 @@ const Nav = ({ handleLogOut }) => {
         <Link to="/chat" className="nav-link">
           Chat
         </Link>
-        
-        
       </nav>
     </header>
   )
