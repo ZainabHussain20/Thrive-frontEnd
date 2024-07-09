@@ -10,6 +10,7 @@ import ProgramDetail from "./pages/ProgramDetail"
 import UpdatePassword from "./pages/UpdatePassword"
 import Reviews from "./components/Reviews"
 import AddProgram from "./components/AddProgram"
+import Cart from "./components/Cart"
 import { CheckSession } from "./services/Auth"
 import { useEffect, useState } from "react"
 
@@ -49,6 +50,8 @@ function App() {
             <Route path="/updatePassword" element={<UpdatePassword />} />
             <Route path="/program/:programId" element={<ProgramDetail />} />
             <Route path="/reviews/:userId" element={<Reviews />} />
+            <Route path="/registration/:userId/cart/" element={<Cart />} />
+
             {/* <Route path="/chat" element={<Chat />} /> */}
           </Routes>
         </main>

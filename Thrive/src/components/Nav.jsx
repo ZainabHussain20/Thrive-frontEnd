@@ -3,11 +3,13 @@ import { Link } from "react-router-dom"
 import logo from "../assets/logo.svg"
 
 const Nav = ({ user, handleLogOut }) => {
+  const userId = localStorage.getItem("userId")
+
   return (
     <header>
       <nav className="nav-links">
         <Link to="/">
-          <img src={logo} />
+          <img src={logo} alt="Logo" />
         </Link>
         <Link to="/">Home</Link>
         {user ? (
@@ -22,12 +24,14 @@ const Nav = ({ user, handleLogOut }) => {
                 <Link to="/Programs">Programs</Link>
                 <Link to="/MyRequest">My Program</Link>
                 <Link to="/Profile">Profile</Link>
+
                 <Link to="/chat">Chat</Link>
               </>
             )}
             <Link to="/" onClick={handleLogOut}>
               Sign Out
-            </Link>
+            </Link>{" "}
+            {userId && <Link to={`/registration/${userId}/cart`}>Cart</Link>}
           </>
         ) : (
           <>
