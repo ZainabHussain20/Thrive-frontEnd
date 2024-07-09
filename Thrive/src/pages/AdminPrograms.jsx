@@ -1,5 +1,5 @@
 import ProgramCard from '../components/ProgramCard'
-// import EditProgramForm from '../components/EditProgramForm'
+import EditProgramForm from '../components/EditProgramForm'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 import { BASE_URL } from '../services/api'
