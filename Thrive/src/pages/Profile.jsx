@@ -1,106 +1,61 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import ProfileCard from "../components/ProfileCard"
+import { Link } from "react-router-dom"
+import Client from "../services/api"
+// import { useParams } from "react-router-dom"
 
 const Profile = () => {
-  const userProfile = {
-    name: "",
-    birthDate: "",
-    nationality: "",
-    gender: "",
-    email: "",
-    phoneNumber: "",
-  }
+  const [profile, setProfile] = useState({})
+  const [userId, setUserId] = useState("")
 
-  const [profile, setProfile] = useState(userProfile)
-  const [editMode, setEditMode] = useState(false)
+  useEffect(() => {
+    const storedUserId = localStorage.getItem("userId")
+    if (storedUserId) setUserId(storedUserId)
 
-  const handleEdit = () => {
-    setEditMode(true)
-  }
+    const getprofileDetails = async () => {
+      try {
+        const response = await Client.get(`/profile/${userId}`)
+        setProfile(response.data)
+      } catch (error) {
+        console.error("Error fetching profile details:", error)
+      }
+    }
 
-  const handleChange = (e) => {
-    const { name, value } = e.target
-    setProfile((prevProfile) => ({
-      ...prevProfile,
-      [name]: value,
-    }))
-  }
+    if (userId) {
+      getprofileDetails()
+    }
+  }, [userId])
 
-  const handleSubmit = (e) => {
-    e.preventDefault()
-
-    setEditMode(false)
-    console.log("Updated profile:", profile)
-  }
-
-  return (
-    <div className="profilepage">
-      {!editMode ? (
-        <>
-          <ProfileCard profile={profile} />
-          <button onClick={handleEdit}>Edit Profile</button>
-        </>
-      ) : (
-        <form onSubmit={handleSubmit}>
-          <label>
-            Name:
-            <input
-              type="text"
-              name="name"
-              value={profile.name}
-              onChange={handleChange}
-            />
-          </label>
-          <label>
-            BirthDate:
-            <input
-              type="date"
-              name="birthDate"
-              value={profile.birthDate}
-              onChange={handleChange}
-            />
-          </label>
-          <label>
-            Nationality:
-            <input
-              type="text"
-              name="nationality"
-              value={profile.nationality}
-              onChange={handleChange}
-            />
-          </label>
-          <label>
-            Gender:
-            <input
-              type="text"
-              name="gender"
-              value={profile.gender}
-              onChange={handleChange}
-            />
-          </label>
-          <label>
-            Email:
-            <input
-              type="email"
-              name="email"
-              value={profile.email}
-              onChange={handleChange}
-            />
-          </label>
-          <label>
-            Phone Number:
-            <input
-              type="tel"
-              name="phoneNumber"
-              value={profile.phoneNumber}
-              onChange={handleChange}
-            />
-          </label>
-          <button type="submit">Save</button>
-        </form>
-      )}
+  return profile ? (
+    <div className="program-content">
+      <h2>Name : {profile.userName}</h2>
+      <div>
+        <h3>FirstName : {profile.firstName}</h3>
+      </div>
+      <div>
+        <h3>LastName: {profile.lastName}</h3>
+        <div>
+          <h3>Limit: {profile.gender}</h3>
+        </div>
+        <div>
+          <h3>BirthDate: {profile.birthDate}</h3>
+        </div>
+        <div>
+          <h3>CPR: {profile.cpr}</h3>
+        </div>
+        <div>
+          <h3>Email: {profile.email}</h3>
+        </div>
+        <div>
+          <h3>Gender: {profile.gender}</h3>
+        </div>
+        <div>
+          <h3>Phone Number: {profile.phoneNumber}</h3>
+        </div>
+      </div>
+      <Link to={`/Profile/${userId}/edit`}>Edit profile</Link>
     </div>
-  )
+  ) : null
 }
 
 export default Profile

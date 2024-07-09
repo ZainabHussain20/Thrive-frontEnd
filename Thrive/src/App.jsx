@@ -11,6 +11,7 @@ import ProgramDetail from "./pages/ProgramDetail"
 import UpdatePassword from "./pages/UpdatePassword"
 import Reviews from "./components/Reviews"
 import AddProgram from "./components/AddProgram"
+import ProfileCard from "./components/ProfileCard"
 import { CheckSession } from "./services/Auth"
 import { useEffect, useState } from "react"
 
@@ -50,6 +51,7 @@ function App() {
             <Route path="/updatePassword" element={<UpdatePassword />} />
             <Route path="/program/:ProgramId" element={<ProgramDetail />} />
             <Route path="/Profile" element={<Profile />} />
+            <Route path="/Profile/:userId/edit" element={<ProfileCard />} />
           </Routes>
         </main>
       </div>
