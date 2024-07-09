@@ -23,12 +23,36 @@ const ProgramDetails = () => {
 
   return programDetails ? (
     <div className="program-content">
-      <h2>name : {programDetails.name}</h2>
+      <h2>Name : {programDetails.name}</h2>
       <div>
-        <p>description : {programDetails.description}</p>
+        <p>Description : {programDetails.description}</p>
       </div>
       <div>
-        <h3>Limit: {programDetails.limit}</h3>
+        <h3>Start: {programDetails.start}</h3>
+      </div>
+      <div>
+        <h3>End: {programDetails.end}</h3>
+      </div>
+      <div>
+        <h3>Period: {programDetails.period}</h3>
+      </div>
+      <div>
+        <h3>Price: {programDetails.price}</h3>
+      </div>
+      <div>
+        <h3>Gender: {programDetails.gender}</h3>
+      </div>
+      <div>
+        <h3>Location: {programDetails.location}</h3>
+      </div>
+      <div>
+        <h3>Block: {programDetails.block}</h3>
+      </div>
+      <div>
+        <h3>Bulding: {programDetails.bulding}</h3>
+      </div>
+      <div>
+        <h3>Line: {programDetails.line}</h3>
       </div>
     </div>
   ) : null
