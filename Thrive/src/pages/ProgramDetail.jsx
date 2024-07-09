@@ -5,6 +5,7 @@ import Client from "../services/api"
 const ProgramDetails = () => {
   const [programDetails, setProgramDetails] = useState({})
   let { programId } = useParams()
+  const [userRequests, setUserRequests] = useState([])
 
   useEffect(() => {
     const getProgramDetails = async () => {
@@ -20,6 +21,19 @@ const ProgramDetails = () => {
       getProgramDetails()
     }
   }, [programId])
+
+  const handleRegistration = async () => {
+    try {
+      const newRequest = {
+        programId: programId,
+        status: "pending",
+      }
+
+      setUserRequests([...userRequests, newRequest])
+    } catch (error) {
+      console.error("Error registering for program:", error)
+    }
+  }
 
   return programDetails ? (
     <div className="program-content">
@@ -54,6 +68,7 @@ const ProgramDetails = () => {
       <div>
         <h3>Line: {programDetails.line}</h3>
       </div>
+      <button onClick={handleRegistration}>Register</button>
     </div>
   ) : null
 }
