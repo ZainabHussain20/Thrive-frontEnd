@@ -1,22 +1,21 @@
-import { Route, Routes } from "react-router"
-import "./App.css"
-import Nav from "./components/Nav"
-import About from "./pages/About"
-import Register from "./pages/Register"
-import SignIn from "./pages/SignIn"
-import Home from "./pages/Home"
-import Program from "./pages/Program"
-import ProgramDetail from "./pages/ProgramDetail"
-import UpdatePassword from "./pages/UpdatePassword"
-import Reviews from "./components/Reviews"
-import AddProgram from "./components/AddProgram"
+import { Route, Routes } from 'react-router'
+import './App.css'
+import Nav from './components/Nav'
+import About from './pages/About'
+import Register from './pages/Register'
+import SignIn from './pages/SignIn'
+import Home from './pages/Home'
+import Program from './pages/Program'
+import ProgramDetail from './pages/ProgramDetail'
+import Profile from './pages/Profile'
+import UpdatePassword from './pages/UpdatePassword'
+import ProfileCard from './components/ProfileCard'
+import Reviews from './components/Reviews'
+import AdminPrograms from './pages/AdminPrograms'
 import AddProgram from './components/AddProgram'
 import Cart from "./components/Cart"
 import { CheckSession } from "./services/Auth"
 import { useEffect, useState } from 'react'
-
-
-
 
 function App() {
   const [user, setUser] = useState(null)
@@ -62,8 +61,6 @@ function App() {
             <Route path="/program/:ProgramId" element={<ProgramDetail />} />
             <Route path="/Profile" element={<Profile />} />
             <Route path="/Profile/:userId/edit" element={<ProfileCard />} />
-            <Route path="/chat" element={<Chatbot />} /> {/* Add this route */}
-
           </Routes>
         </main>
       </div>
