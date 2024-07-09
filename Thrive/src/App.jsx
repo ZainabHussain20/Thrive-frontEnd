@@ -10,9 +10,13 @@ import ProgramDetail from "./pages/ProgramDetail"
 import UpdatePassword from "./pages/UpdatePassword"
 import Reviews from "./components/Reviews"
 import AddProgram from "./components/AddProgram"
+import AddProgram from './components/AddProgram'
 import Cart from "./components/Cart"
 import { CheckSession } from "./services/Auth"
-import { useEffect, useState } from "react"
+import { useEffect, useState } from 'react'
+
+
+
 
 function App() {
   const [user, setUser] = useState(null)
@@ -28,7 +32,7 @@ function App() {
   }
 
   useEffect(() => {
-    const token = localStorage.getItem("token")
+    const token = localStorage.getItem('token')
     if (token) {
       checkToken()
     }
@@ -46,13 +50,20 @@ function App() {
             <Route path="/Signin" element={<SignIn setUser={setUser} />} />
             <Route path="/Register" element={<Register />} />
             <Route path="/Programs" element={<Program />} />
+            <Route
+              path="/adminPrograms"
+              element={<AdminPrograms user={user} />}
+            />
             <Route path="/addProgram" element={<AddProgram />} />
             <Route path="/updatePassword" element={<UpdatePassword />} />
             <Route path="/program/:programId" element={<ProgramDetail />} />
             <Route path="/reviews/:userId" element={<Reviews />} />
             <Route path="/registration/:userId/cart/" element={<Cart />} />
+            <Route path="/program/:ProgramId" element={<ProgramDetail />} />
+            <Route path="/Profile" element={<Profile />} />
+            <Route path="/Profile/:userId/edit" element={<ProfileCard />} />
+            <Route path="/chat" element={<Chatbot />} /> {/* Add this route */}
 
-            {/* <Route path="/chat" element={<Chat />} /> */}
           </Routes>
         </main>
       </div>
