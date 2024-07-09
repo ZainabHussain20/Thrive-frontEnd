@@ -1,10 +1,12 @@
 import ProgramCard from '../components/ProgramCard'
+// import EditProgramForm from '../components/EditProgramForm'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 import { BASE_URL } from '../services/api'
 
 const AdminPrograms = ({ user }) => {
   const [programs, setPrograms] = useState([])
+  const [editingProgram, setEditingProgram] = useState(null)
 
   useEffect(() => {
     const getPrograms = async () => {
@@ -28,14 +30,32 @@ const AdminPrograms = ({ user }) => {
   }
 
   const handleEditProgram = (programId) => {
-    console.log('Edit program with id:', programId)
+    setEditingProgram(programId)
+  }
+
+  const handleCloseEditForm = () => {
+    setEditingProgram(null)
+  }
+
+  const handleUpdateProgram = (updatedProgram) => {
+    setPrograms((prevPrograms) =>
+      prevPrograms.map((program) =>
+        program._id === updatedProgram._id ? updatedProgram : program
+      )
+    )
   }
 
   const isAdmin = user && user.type === 'Admin'
 
   return (
     <div className="child-content">
-      {programs.length > 0 ? (
+      {editingProgram ? (
+        <EditProgramForm
+          programId={editingProgram}
+          onClose={handleCloseEditForm}
+          onUpdate={handleUpdateProgram}
+        />
+      ) : programs.length > 0 ? (
         programs.map((program) => (
           <ProgramCard
             key={program._id}
