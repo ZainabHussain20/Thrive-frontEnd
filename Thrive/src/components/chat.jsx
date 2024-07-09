@@ -1,5 +1,9 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { motion, AnimatePresence } from 'framer-motion';
+import Lottie from 'lottie-react'
+import animationData from '../assets/Animation - 1720515153102.json'
+import '../Chatbot.css'  // Create a CSS file for styling
 
 const Chatbot = () => {
   const [messages, setMessages] = useState([]);
@@ -19,25 +23,35 @@ const Chatbot = () => {
 
     setMessages([...messages, { text: buttonText, sender: 'user' }, { text: botResponse.text, sender: 'bot', buttons: botResponse.buttons }]);
   };
-
   return (
-    <div>
+    <div className="chatbot-container">
+            <Lottie animationData={animationData} style={{ width: 300, height: 300 }} />
+
       <div className="chat-window">
-        {messages.map((message, index) => (
-          <div key={index} className={`message ${message.sender}`}>
-            <p>{message.text}</p>
-            {message.buttons && message.buttons.map((button, idx) => (
-              <button key={idx} onClick={() => handleButtonClick(button)}>{button}</button>
-            ))}
-          </div>
-        ))}
+        <AnimatePresence>
+          {messages.map((message, index) => (
+            <motion.div
+              key={index}
+              className={`message ${message.sender}`}
+              initial={{ opacity: 0, y: 50 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -50 }}
+              transition={{ duration: 0.3 }}
+            >
+              <p>{message.text}</p>
+              {message.buttons && message.buttons.map((button, idx) => (
+                <button key={idx} onClick={() => handleButtonClick(button)}>{button}</button>
+              ))}
+            </motion.div>
+          ))}
+        </AnimatePresence>
       </div>
       <div className="input-area">
         <input type="text" value={input} onChange={(e) => setInput(e.target.value)} />
         <button onClick={sendMessage}>Send</button>
       </div>
     </div>
-  );
-};
+  )
+}
 
 export default Chatbot;
