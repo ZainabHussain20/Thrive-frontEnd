@@ -3,7 +3,7 @@ import axios from 'axios';
 import { motion, AnimatePresence } from 'framer-motion';
 import Lottie from 'lottie-react'
 import animationData from '../assets/Animation - 1720515153102.json'
-import '../Chatbot.css'  // Create a CSS file for styling
+import '../Chatbot.css'  
 
 const Chatbot = () => {
   const [messages, setMessages] = useState([]);
