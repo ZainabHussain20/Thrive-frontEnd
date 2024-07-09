@@ -28,7 +28,7 @@ const AdminPrograms = ({ user }) => {
   }
 
   const handleEditProgram = (programId) => {
-    console.log('Edit program with ID:', programId)
+    console.log('Edit program with id:', programId)
   }
 
   const isAdmin = user && user.type === 'Admin'
