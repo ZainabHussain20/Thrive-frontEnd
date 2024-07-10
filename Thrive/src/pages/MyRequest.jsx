@@ -36,6 +36,6 @@ const MyPrograms = () => {
       )}
     </div>
   );
-};
+}
 
-export default MyPrograms;
+export default MyPrograms

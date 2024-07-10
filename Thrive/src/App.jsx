@@ -54,10 +54,7 @@ function App() {
             <Route path="/Signin" element={<SignIn setUser={setUser} />} />
             <Route path="/Register" element={<Register />} />
             <Route path="/Programs" element={<Program />} />
-            <Route
-              path="/adminPrograms"
-              element={<AdminPrograms user={user} />}
-            />
+            <Route path="/adminPrograms" element={<AdminPrograms user={user} />} />
             <Route path="/addProgram" element={<AddProgram />} />
             <Route path="/updatePassword" element={<UpdatePassword />} />
             <Route path="/reviews/:userId" element={<Reviews />} />
@@ -67,14 +64,9 @@ function App() {
             <Route path="/MyRequest/:userId" element={<MyRequest />} />
             <Route path="/Profile/:userId/edit" element={<ProfileCard />} />
             <Route path="/registration" element={<AdminRequest />} />
-            <Route
-              path="/registration/:registrationId"
-              element={<AcceptRequest />}
-            />
+            <Route path="/registration/:registrationId" element={<AcceptRequest />} />
             <Route path="/programs/:userId" element={<MyPrograms />} />
-            {/* <Route path="/chat" element={<Chatbot />} />  */}
-            <Route path="/chat" element={<Chatbot />} /> 
-            
+            <Route path="/chat" element={<Chatbot />} />
           </Routes>
         </main>
       </div>
