@@ -23,7 +23,12 @@ const Programs = () => {
     <div className="program-content">
       {programs.length > 0 ? (
         programs.map((program) => (
-          <ProgramCard key={program._id} id={program._id} name={program.name} />
+          <ProgramCard
+            key={program._id}
+            id={program._id}
+            name={program.name}
+            img={program.img}
+          />
         ))
       ) : (
         <h4>No programs available!</h4>

@@ -106,7 +106,7 @@ const ProfileCard = () => {
             Birth Date
           </label>
           <input
-            // onChange={handleChange}
+            readOnly
             name="birthDate"
             type="date"
             placeholder="Birth Date"
@@ -119,7 +119,7 @@ const ProfileCard = () => {
             CPR
           </label>
           <input
-            // onChange={handleChange}
+            readOnly
             name="cpr"
             type="text"
             placeholder="CPR"
@@ -141,21 +141,7 @@ const ProfileCard = () => {
             className="inputField"
           />
         </div>
-        <div className="input-wrapper">
-          <label htmlFor="gender" className="label">
-            Gender
-          </label>
-          <select
-            onChange={handleChange}
-            name="gender"
-            value={formValues.gender}
-            className="inputField"
-          >
-            <option value="">Select Gender</option>
-            <option value="Male">Male</option>
-            <option value="Female">Female</option>
-          </select>
-        </div>
+
         <div className="input-wrapper">
           <label htmlFor="phoneNumber" className="label">
             Phone Number

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
 import Client from "../services/api"
+import leadership from "../assets/leadership.svg"
 import {
   FaUser,
   FaBirthdayCake,
@@ -45,11 +46,11 @@ const Profile = () => {
           <FaUser /> <span className="profile-detail">{profile.lastName}</span>
         </div>
         <div className="profile-item">
-          {" "}
+          <img src={leadership} />
           <span className="profile-detail">{profile.gender}</span>
         </div>
         <div className="profile-item">
-          <FaBirthdayCake />{" "}
+          <FaBirthdayCake />
           <span className="profile-detail">
             {new Date(profile.birthDate).toLocaleDateString()}
           </span>
