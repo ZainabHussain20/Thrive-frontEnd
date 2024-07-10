@@ -64,7 +64,7 @@ function App() {
             <Route path="/registration/:userId/cart/" element={<Cart />} />
             <Route path="/program/:programId" element={<ProgramDetail />} />
             <Route path="/Profile" element={<Profile />} />
-            <Route path="/MyRequest" element={<MyRequest />} />
+            <Route path="/MyRequest/:userId" element={<MyRequest />} />
             <Route path="/Profile/:userId/edit" element={<ProfileCard />} />
             <Route path="/registration" element={<AdminRequest />} />
             <Route
@@ -72,7 +72,9 @@ function App() {
               element={<AcceptRequest />}
             />
             <Route path="/programs/:userId" element={<MyPrograms />} />
+            {/* <Route path="/chat" element={<Chatbot />} />  */}
             <Route path="/chat" element={<Chatbot />} /> 
+            
           </Routes>
         </main>
       </div>

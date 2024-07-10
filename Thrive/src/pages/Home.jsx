@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { Link, useNavigate } from "react-router-dom"
+import { Link , useNavigate } from "react-router-dom"
 import FetchReview from "../components/FetchReview"
 import Client from "../services/api"
 import Lottie from 'lottie-react'
@@ -27,10 +27,14 @@ const Home = () => {
     navigate("/chat")
   }
 
+
   return (
     <div className="homepage">
+      <div className="AddReveiw">
+        <Link to={`/reviews/${userId}`}>+</Link>
+      </div>
       <div className="scrollable-container">
-        <div className="child-content">
+        <div className="reviewForm">
           {reviews.map((review) => (
             <FetchReview
               key={review._id}
@@ -41,11 +45,13 @@ const Home = () => {
             />
           ))}
         </div>
+        
       </div>
       <Link to={`/reviews/${userId}`}>ADD REVIEW</Link>
       <div onClick={handleLottieClick} style={{ cursor: 'pointer' }}>
         <Lottie animationData={animationData} style={{ width: 300, height: 300 }} />
       </div>
+
     </div>
   )
 }
