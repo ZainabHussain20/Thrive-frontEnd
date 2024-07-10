@@ -19,6 +19,7 @@ import AcceptRequest from "./pages/AcceptRequest"
 import MyPrograms from "./pages/MyPrograms"
 import Cart from "./components/Cart"
 import Chatbot from "./components/chat"
+import Payment from "./components/Payment"
 import { CheckSession } from "./services/Auth"
 import { useEffect, useState } from "react"
 
@@ -63,7 +64,7 @@ function App() {
             <Route path="/reviews/:userId" element={<Reviews />} />
             <Route path="/registration/:userId/cart/" element={<Cart />} />
             <Route path="/program/:programId" element={<ProgramDetail />} />
-            <Route path="/Profile" element={<Profile />} />
+            <Route path="/Profile/:userId" element={<Profile />} />
             <Route path="/MyRequest/:userId" element={<MyRequest />} />
             <Route path="/Profile/:userId/edit" element={<ProfileCard />} />
             <Route path="/registration" element={<AdminRequest />} />
@@ -73,6 +74,8 @@ function App() {
             />
             <Route path="/programs/:userId" element={<MyPrograms />} />
             {/* <Route path="/chat" element={<Chatbot />} />  */}
+            <Route path="/payment" element={<Payment />} />
+
             <Route path="/chat" element={<Chatbot />} />
           </Routes>
         </main>

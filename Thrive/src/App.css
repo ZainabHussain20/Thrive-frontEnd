@@ -13,6 +13,9 @@ body {
   max-height: 100%;
 }
 
+.aboutText {
+  text-align: justify;
+}
 .forms {
   max-width: 400px;
   margin: 20px auto;
@@ -275,42 +278,55 @@ button:hover:enabled {
   text-decoration: underline;
 }
 
-.cart-containe {
-  max-width: 300px;
+.cart {
+  text-align: center;
+  width: 800px;
   margin: 20px auto;
-  padding: 20px;
-  background-color: #f0f0f0;
-  border-radius: 20px;
-  border: 1px solid #000000;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  position: relative;
-  overflow: hidden;
-  text-align: center;
 }
 
-.cartprogram {
-  max-width: 300px;
-  margin-right: auto;
-  padding: 20px;
-  background-color: #f0f0f0;
-  border-radius: 20px;
-  border: 1px solid #000000;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  position: relative;
-  overflow: hidden;
-  text-align: center;
+.cartCard {
+  background-color: #dfe1ed65;
+}
+.cartFlex {
+  justify-content: space-between;
+  display: flex;
+  padding: 30px;
 }
 
-.totalprice {
-  max-width: 200px;
-  margin-left: auto;
-  margin-top: 50px;
+.cartProgramPrice {
+  background-color: #f9f9f982;
+  border-radius: 3px;
+  width: 200px;
+  height: 10px;
   padding: 20px;
-  background-color: #f0f0f0;
-  border-radius: 20px;
-  border: 1px solid #000000;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  position: relative;
-  overflow: hidden;
-  text-align: center;
+}
+
+.cartProgramName {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.paymentCart {
+  display: flex;
+  justify-content: space-between;
+}
+
+.paymentButton {
+  width: 200px;
+  background-color: #f9f9f9c1;
+  height: 40px;
+  font-size: 15px;
+}
+
+.cartProgramDelete {
+  width: 200px;
+  background-color: #f9f9f9c1;
+  height: 40px;
+  font-size: 15px;
+  width: 240px;
+  margin-bottom: 5px;
+}
+
+input {
+  margin-top: 3px;
 }

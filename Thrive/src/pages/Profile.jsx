@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
 import Client from "../services/api"
 import leadership from "../assets/leadership.svg"
+import { useParams } from "react-router-dom"
+
 import {
   FaUser,
   FaBirthdayCake,
@@ -12,12 +14,9 @@ import {
 
 const Profile = () => {
   const [profile, setProfile] = useState({})
-  const [userId, setUserId] = useState("")
+  let { userId } = useParams()
 
   useEffect(() => {
-    const storedUserId = localStorage.getItem("userId")
-    if (storedUserId) setUserId(storedUserId)
-
     const getProfileDetails = async () => {
       try {
         const response = await Client.get(`/profile/${userId}`)
