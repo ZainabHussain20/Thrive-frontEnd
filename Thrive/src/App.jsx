@@ -1,25 +1,25 @@
-import { Route, Routes } from "react-router"
-import "./App.css"
-import Nav from "./components/Nav"
-import About from "./pages/About"
-import Register from "./pages/Register"
-import SignIn from "./pages/SignIn"
-import Home from "./pages/Home"
-import Program from "./pages/Program"
-import ProgramDetail from "./pages/ProgramDetail"
-import Profile from "./pages/Profile"
-import UpdatePassword from "./pages/UpdatePassword"
-import ProfileCard from "./components/ProfileCard"
-import Reviews from "./components/Reviews"
-import AdminPrograms from "./pages/AdminPrograms"
-import AddProgram from "./components/AddProgram"
 import MyRequest from "./pages/MyRequest"
-import AdminRequest from "./pages/AdminRequest"
-import AcceptRequest from "./pages/AcceptRequest"
-import MyPrograms from "./pages/MyPrograms"
-import Cart from "./components/Cart"
-import { CheckSession } from "./services/Auth"
-import { useEffect, useState } from "react"
+import AdminRequest from './components/AdminRequest'
+import MyRequest from './pages/MyRequest'
+import { Route, Routes } from 'react-router'
+import './App.css'
+import Nav from './components/Nav'
+import About from './pages/About'
+import Register from './pages/Register'
+import SignIn from './pages/SignIn'
+import Home from './pages/Home'
+import Program from './pages/Program'
+import ProgramDetail from './pages/ProgramDetail'
+import Profile from './pages/Profile'
+import UpdatePassword from './pages/UpdatePassword'
+import ProfileCard from './components/ProfileCard'
+import Reviews from './components/Reviews'
+import AdminPrograms from './pages/AdminPrograms'
+import AddProgram from './components/AddProgram'
+import Cart from './components/Cart'
+import MyRequest from './pages/MyRequest'
+import { CheckSession } from './services/Auth'
+import { useEffect, useState } from 'react'
 
 function App() {
   const [user, setUser] = useState(null)
@@ -35,7 +35,7 @@ function App() {
   }
 
   useEffect(() => {
-    const token = localStorage.getItem("token")
+    const token = localStorage.getItem('token')
     if (token) {
       checkToken()
     }
@@ -49,7 +49,7 @@ function App() {
         <main>
           <Routes>
             <Route path="/about" element={<About />} />
-            <Route path="/" element={<Home />} />
+            <Route path="/" element={<Home user={user} />} />
             <Route path="/Signin" element={<SignIn setUser={setUser} />} />
             <Route path="/Register" element={<Register />} />
             <Route path="/Programs" element={<Program />} />
@@ -65,13 +65,15 @@ function App() {
             <Route path="/Profile" element={<Profile />} />
             <Route path="/MyRequest" element={<MyRequest />} />
             <Route path="/Profile/:userId/edit" element={<ProfileCard />} />
+            <Route path="/Request" element={<AdminRequest />} />
+            <Route path="/MyRequest" element={<MyRequest userId={user?._id} />} />
+            <Route path="/chat" element={<Chatbot />} /> 
             <Route path="/registration" element={<AdminRequest />} />
             <Route
               path="/registration/:registrationId"
               element={<AcceptRequest />}
             />
             <Route path="/programs/:userId" element={<MyPrograms />} />
-            {/* <Route path="/chat" element={<Chatbot />} />  */}
           </Routes>
         </main>
       </div>

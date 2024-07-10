@@ -1,18 +1,18 @@
-import { useEffect, useState } from "react"
-import { Link } from "react-router-dom"
-import FetchReview from "../components/FetchReview"
-import Client from "../services/api"
+import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
+import FetchReview from '../components/FetchReview'
+import Client from '../services/api'
 
-const Home = () => {
+const Home = ({ user }) => {
   const [reviews, setReviews] = useState([])
-  const userId = localStorage.getItem("userId")
+  const userId = localStorage.getItem('userId')
 
   const getReviews = async () => {
     try {
-      const res = await Client.get(`programs/reviews`)
+      const res = await Client.get('/programs/reviews')
       setReviews(res.data)
     } catch (error) {
-      console.error("Failed to fetch reviews:", error)
+      console.error('Failed to fetch reviews:', error)
     }
   }
 
@@ -20,6 +20,7 @@ const Home = () => {
     getReviews()
   }, [])
 
+  // console.log(`user ${JSON.stringify(user)}`)
   return (
     <div className="homepage">
       <div className="scrollable-container">
@@ -31,11 +32,14 @@ const Home = () => {
               content={review.content}
               program={review.program}
               rating={review.rating}
+              user={review.user}
             />
           ))}
         </div>
       </div>
-      <Link to={`/reviews/${userId}`}>ADD REVIEW</Link>
+      {user && user.type !== 'Admin' && (
+        <Link to={`/reviews/${userId}`}>ADD REVIEW</Link>
+      )}
     </div>
   )
 }
