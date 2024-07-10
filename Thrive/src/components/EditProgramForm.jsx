@@ -44,39 +44,41 @@ const EditProgramForm = ({ programId, onClose, onUpdate }) => {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
-        <label>Description:</label>
-        <input
-          type="text"
-          name="description"
-          value={program.description}
-          onChange={handleChange}
-        />
-      </div>
-      <div>
-        <label>Gender:</label>
-        <input
-          type="text"
-          name="gender"
-          value={program.gender}
-          onChange={handleChange}
-        />
-      </div>
-      <div>
-        <label>Price:</label>
-        <input
-          type="number"
-          name="price"
-          value={program.price}
-          onChange={handleChange}
-        />
-      </div>
-      <button type="submit">Save</button>
-      <button type="button" onClick={onClose}>
-        Cancel
-      </button>
-    </form>
+    <div className="forms">
+      <form onSubmit={handleSubmit}>
+        <div>
+          <label>Description:</label>
+          <input
+            type="text"
+            name="description"
+            value={program.description}
+            onChange={handleChange}
+          />
+        </div>
+        <div>
+          <label>Gender:</label>
+          <select name="gender" value={program.gender} onChange={handleChange}>
+            <option value="">Select Gender</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Mixed">Mixed</option>
+          </select>
+        </div>
+        <div>
+          <label>Price:</label>
+          <input
+            type="number"
+            name="price"
+            value={program.price}
+            onChange={handleChange}
+          />
+        </div>
+        <button type="submit">Save</button>
+        <button type="button" onClick={onClose}>
+          Cancel
+        </button>
+      </form>
+    </div>
   )
 }
 
