@@ -25,6 +25,8 @@ const AdminRequest = () => {
             key={registration._id}
             id={registration._id}
             user={registration.user}
+            userName={`${registration.user.firstName} ${registration.user.lastName}`}
+            programName={registration.program.name}
           />
         ))
       ) : (
