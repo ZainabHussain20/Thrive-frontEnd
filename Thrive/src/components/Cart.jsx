@@ -37,14 +37,6 @@ const Cart = () => {
     }
   }, [userId])
 
-<<<<<<< HEAD
-  if (!cart) {
-    return (
-      <div className="forms">
-        <p>No programs found in the cart.</p>
-      </div>
-    )
-=======
   const handlePayNow = () => {
     try {
       const payNow = axios.push(`${BASE_URL}/Payment`, payNow)
@@ -55,7 +47,6 @@ const Cart = () => {
 
   if (!cart || !cart.programs || cart.programs.length === 0) {
     return <p>No programs found in the cart.</p>
->>>>>>> 8bcf8d7 (pull the cart work)
   }
 
   return (
