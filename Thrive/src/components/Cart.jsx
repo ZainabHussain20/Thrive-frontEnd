@@ -35,8 +35,12 @@ const Cart = () => {
     }
   }, [userId])
 
-  if (!cart || !cart.programs || cart.programs.length === 0) {
-    return <p>No programs found in the cart.</p>
+  if (!cart) {
+    return (
+      <div className="forms">
+        <p>No programs found in the cart.</p>
+      </div>
+    )
   }
 
   return (

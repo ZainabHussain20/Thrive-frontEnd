@@ -1,6 +1,6 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
-import logo from '../assets/logo.svg'
+import React from "react"
+import { Link } from "react-router-dom"
+import logo from "../assets/logo.svg"
 
 const Nav = ({ user, handleLogOut }) => {
   const userId = localStorage.getItem("userId")
@@ -14,16 +14,16 @@ const Nav = ({ user, handleLogOut }) => {
         <Link to="/">Home</Link>
         {user ? (
           <>
-            {user.type === 'Admin' ? (
+            {user.type === "Admin" ? (
               <>
                 <Link to="/addProgram">Add Programs</Link>
                 <Link to="/adminPrograms">Programs</Link>
-                <Link to="/Request">Request</Link>
+                <Link to="/registration">Request</Link>
               </>
             ) : (
               <>
                 <Link to="/Programs">Programs</Link>
-                <Link to="/MyRequest">My Program</Link>
+                <Link to={`/programs/${userId}`}>My Program</Link>
                 <Link to="/Profile">Profile</Link>
 
                 <Link to="/chat">Chat</Link>

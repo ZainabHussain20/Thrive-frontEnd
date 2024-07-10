@@ -59,17 +59,21 @@ function App() {
             />
             <Route path="/addProgram" element={<AddProgram />} />
             <Route path="/updatePassword" element={<UpdatePassword />} />
-
             <Route path="/reviews/:userId" element={<Reviews />} />
             <Route path="/registration/:userId/cart/" element={<Cart />} />
-            <Route path="/program/:ProgramId" element={<ProgramDetail />} />
-
+            <Route path="/program/:programId" element={<ProgramDetail />} />
             <Route path="/Profile" element={<Profile />} />
             <Route path="/MyRequest" element={<MyRequest />} />
             <Route path="/Profile/:userId/edit" element={<ProfileCard />} />
             <Route path="/Request" element={<AdminRequest />} />
             <Route path="/MyRequest" element={<MyRequest userId={user?._id} />} />
             <Route path="/chat" element={<Chatbot />} /> 
+            <Route path="/registration" element={<AdminRequest />} />
+            <Route
+              path="/registration/:registrationId"
+              element={<AcceptRequest />}
+            />
+            <Route path="/programs/:userId" element={<MyPrograms />} />
           </Routes>
         </main>
       </div>

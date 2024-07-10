@@ -1,8 +1,13 @@
 import React, { useState, useEffect } from "react"
-import ProfileCard from "../components/ProfileCard"
 import { Link } from "react-router-dom"
 import Client from "../services/api"
-// import { useParams } from "react-router-dom"
+import {
+  FaUser,
+  FaBirthdayCake,
+  FaEnvelope,
+  FaPhone,
+  FaIdCard,
+} from "react-icons/fa"
 
 const Profile = () => {
   const [profile, setProfile] = useState({})
@@ -12,7 +17,7 @@ const Profile = () => {
     const storedUserId = localStorage.getItem("userId")
     if (storedUserId) setUserId(storedUserId)
 
-    const getprofileDetails = async () => {
+    const getProfileDetails = async () => {
       try {
         const response = await Client.get(`/profile/${userId}`)
         setProfile(response.data)
@@ -22,38 +27,47 @@ const Profile = () => {
     }
 
     if (userId) {
-      getprofileDetails()
+      getProfileDetails()
     }
   }, [userId])
 
   return profile ? (
-    <div className="program-content">
-      <h2>Name : {profile.userName}</h2>
-      <div>
-        <h3>FirstName : {profile.firstName}</h3>
+    <div className="profile-container">
+      <h2>Profile Details</h2>
+      <div className="profile-info">
+        <div className="profile-item">
+          <FaUser /> <span className="profile-detail">{profile.userName}</span>
+        </div>
+        <div className="profile-item">
+          <FaUser /> <span className="profile-detail">{profile.firstName}</span>
+        </div>
+        <div className="profile-item">
+          <FaUser /> <span className="profile-detail">{profile.lastName}</span>
+        </div>
+        <div className="profile-item">
+          {" "}
+          <span className="profile-detail">{profile.gender}</span>
+        </div>
+        <div className="profile-item">
+          <FaBirthdayCake />{" "}
+          <span className="profile-detail">
+            {new Date(profile.birthDate).toLocaleDateString()}
+          </span>
+        </div>
+        <div className="profile-item">
+          <FaIdCard /> <span className="profile-detail">{profile.cpr}</span>
+        </div>
+        <div className="profile-item">
+          <FaEnvelope /> <span className="profile-detail">{profile.email}</span>
+        </div>
+        <div className="profile-item">
+          <FaPhone />
+          <span className="profile-detail">{profile.phoneNumber}</span>
+        </div>
       </div>
-      <div>
-        <h3>LastName: {profile.lastName}</h3>
-        <div>
-          <h3>Limit: {profile.gender}</h3>
-        </div>
-        <div>
-          <h3>BirthDate: {profile.birthDate}</h3>
-        </div>
-        <div>
-          <h3>CPR: {profile.cpr}</h3>
-        </div>
-        <div>
-          <h3>Email: {profile.email}</h3>
-        </div>
-        <div>
-          <h3>Gender: {profile.gender}</h3>
-        </div>
-        <div>
-          <h3>Phone Number: {profile.phoneNumber}</h3>
-        </div>
-      </div>
-      <Link to={`/Profile/${userId}/edit`}>Edit profile</Link>
+      <Link to={`/Profile/${userId}/edit`} className="edit-profile-link">
+        Edit Profile
+      </Link>
     </div>
   ) : null
 }
