@@ -213,17 +213,46 @@ button:hover:enabled {
   display: flex;
   justify-content: space-between;
   padding: 20px;
-  margin-bottom: 20px;
+  font-size: 18px;
 }
 
 .info1 {
-  flex: 1;
+  margin-top: 20px;
+  margin-left: 40px;
+  min-width: 600px;
+  max-width: 600px;
+  text-align: justify;
+}
+
+.programNameDetail {
+  background-color: #525a5d77;
+  text-align: center;
+  width: 600px;
+  border-radius: 3px;
+}
+
+.programNameDetailButton {
+  height: 40px;
+  background-color: #525a5d77;
+  border: none;
+  color: black;
+  text-align: center;
+  width: 600px;
+  padding: 2px;
+}
+
+.locationMap {
+  margin-top: 10px;
 }
 
 .info2 {
-  flex: 1;
   display: flex;
   flex-direction: column;
+}
+
+.dateFlex {
+  display: flex;
+  justify-content: space-around;
 }
 
 .icon {
@@ -233,10 +262,12 @@ button:hover:enabled {
 
 .Location {
   display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.Loc {
-  margin-right: 20px;
+.LocationAdress {
+  margin-right: 40px;
 }
 
 .container {
