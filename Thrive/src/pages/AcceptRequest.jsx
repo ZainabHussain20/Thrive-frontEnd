@@ -10,7 +10,7 @@ const AcceptRequest = () => {
     user: "",
     state: "",
   }
-
+  const [conflict, setConflict] = useState(false)
   const [formValues, setFormValues] = useState(initialState)
 
   useEffect(() => {
@@ -19,13 +19,24 @@ const AcceptRequest = () => {
         const response = await Client.get(
           `/registration/${registrationId}/show`
         )
-        const user = response.data
-
+        const data = response.data
         setFormValues({
-          program: user.program,
-          user: user.user,
-          state: user.state,
+          // program: data.program.name,
+          program: data.program._id,
+          // user: data.user.firstName+" "+data.user.lastName ,
+          user: data.user._id ,
+          state: data.state,
         })
+        console.log(data);
+        const conflictProgram= data.user.userprogram.some((program)=>{
+          for (let index = 0; index < data.program.period.length; index++) {
+            const element = data.program.period[index];
+            if (program.period.includes(element)){
+              return true
+            }
+          }
+        })
+setConflict(conflictProgram)
       } catch (error) {
         console.error("Error fetching user details:", error)
       }
@@ -89,6 +100,15 @@ const AcceptRequest = () => {
             onChange={handleChange}
             className="inputField"
           />
+        </div>
+        <div className="input-wrapper">
+        <label htmlFor="conflict" className="label">
+            Conflict
+          </label>
+          <label htmlFor="conflict" className="label">
+            {conflict?"conflict":"No conflict"}
+          </label>
+          
         </div>
         <button className="authButton">Save Profile</button>
       </form>
