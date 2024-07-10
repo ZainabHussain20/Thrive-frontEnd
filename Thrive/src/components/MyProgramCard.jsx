@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom"
 
-const MyProgramCard = ({ id, name, onDelete, onEdit, isAdmin }) => {
+const MyProgramCard = ({ id, name, onDelete, onEdit, isAdmin, img }) => {
   const handleDelete = () => {
     if (window.confirm("Are you sure you want to delete this program?")) {
       onDelete(id)
@@ -9,7 +9,12 @@ const MyProgramCard = ({ id, name, onDelete, onEdit, isAdmin }) => {
 
   return (
     <div className="card">
-      <h3>{name}</h3>
+      <Link to={`/program/${id}`}>
+        <div className="cardImg" id={id}>
+          <img src={img} className="cardImg" />
+        </div>
+        <div className="programName">{name}</div>
+      </Link>
     </div>
   )
 }

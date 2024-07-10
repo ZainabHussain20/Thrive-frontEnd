@@ -1,16 +1,20 @@
-import { Link } from 'react-router-dom'
+import { Link } from "react-router-dom"
 
-const ProgramCard = ({ id, name, onDelete, onEdit, isAdmin }) => {
+const ProgramCard = ({ id, name, onDelete, onEdit, isAdmin, img }) => {
   const handleDelete = () => {
-    if (window.confirm('Are you sure you want to delete this program?')) {
+    if (window.confirm("Are you sure you want to delete this program?")) {
       onDelete(id)
     }
   }
 
   return (
     <div className="card">
-      <h3>{name}</h3>
-      <Link to={`/program/${id}`}>Course Details</Link>
+      <Link to={`/program/${id}`}>
+        <div className="cardImg">
+          <img src={img} className="cardImg" />
+        </div>
+        <div className="programName">{name}</div>
+      </Link>
       {isAdmin && (
         <>
           <button onClick={handleDelete}>Delete</button>

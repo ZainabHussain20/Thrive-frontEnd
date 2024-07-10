@@ -39,19 +39,10 @@ body {
 
 .program-content {
   gap: 20px;
-  margin-left: 250px;
-  margin-top: 200px;
   display: flex;
-  flex-direction: row;
-
-  max-width: 400px;
-  margin: 20px auto;
+  justify-content: center; /* Center the content horizontally */
+  flex-wrap: wrap; /* Allow content to wrap to the next line */
   padding: 20px;
-  background-color: rgba(255, 255, 255, 0.13);
-  border-radius: 10px;
-  backdrop-filter: blur(10px);
-  border: 2px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
 }
 
 form {
@@ -109,12 +100,15 @@ button:hover:enabled {
   color: #555;
 }
 
-
 .scrollable-container {
   min-height: 400px;
   max-height: 400px;
   max-width: 400px;
   overflow-y: auto;
+}
+
+.scrollable-container::-webkit-scrollbar {
+  display: none;
 }
 
 .homepage {
@@ -127,6 +121,7 @@ button:hover:enabled {
   border-radius: 2px;
   /* background-color: #dfe1ed65; */
   padding: 15px;
+  width: 300px;
 }
 
 .reviewCard {
@@ -167,19 +162,48 @@ button:hover:enabled {
   font-weight: bold;
 }
 
-.card {
-  border: 4px solid #080808;
-  border-radius: 8px;
-  padding: 16px;
-  width: 300px;
+.home {
+  margin-left: 50px;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  justify-content: space-around;
+}
+.card {
+  border-radius: 10px;
+  min-width: 200px;
+  min-height: 200px;
+  max-width: 200px;
+  max-height: 200px;
+  flex: 1 0 30%; /* Allow the card to grow and shrink but maintain 30% of the container width */
 }
 
-.card div {
-  margin-bottom: 10px;
+.program-card {
+  min-width: 200px;
+  max-width: 200px;
+  padding: 20px;
+  border-radius: 10px;
+
+  box-sizing: border-box; /* Include padding and border in the element's total width and height */
+}
+
+.card:hover {
+  transform: scale(0.98);
+  font-weight: bold;
+}
+.cardImg {
+  width: 200px;
+  height: 200px;
+}
+
+.card a {
+  text-decoration: none;
+  color: #000000;
+  text-align: center;
+}
+
+.programName {
+  background-color: #3333335a;
+  padding-top: 5px;
+  padding-bottom: 5px;
 }
 
 .programDetails {

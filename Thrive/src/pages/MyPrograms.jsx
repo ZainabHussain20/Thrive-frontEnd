@@ -24,13 +24,14 @@ const MyPrograms = () => {
   }, [])
 
   return (
-    <div>
+    <div className="program-content">
       {programs.length > 0 ? (
         programs.map((program) => (
           <MyProgramCard
             key={program._id}
             id={program._id}
             name={program.name}
+            img={program.img}
           />
         ))
       ) : (

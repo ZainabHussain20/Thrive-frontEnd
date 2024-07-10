@@ -9,6 +9,7 @@ import building from "../assets/building.svg"
 import road from "../assets/road.svg"
 import brand from "../assets/brand.svg"
 import daily from "../assets/daily.svg"
+import leadership from "../assets/leadership.svg"
 
 const ProgramDetails = () => {
   const [programDetails, setProgramDetails] = useState({})
@@ -56,9 +57,8 @@ const ProgramDetails = () => {
     }
   }
 
-  // Check if programDetails is empty before rendering
-  if (!programDetails || Object.keys(programDetails).length === 0) {
-    return null // Or display a loading indicator if needed
+  if (!programDetails) {
+    return null
   }
 
   return (
@@ -92,7 +92,7 @@ const ProgramDetails = () => {
           </div>
           <div>
             <div>
-              <img src={gender} className="icon" />
+              <img src={leadership} className="icon" />
               {programDetails.gender}
             </div>
           </div>
