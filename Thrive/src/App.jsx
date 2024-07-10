@@ -16,7 +16,6 @@ import AddProgram from "./components/AddProgram"
 import MyRequest from "./pages/MyRequest"
 import AdminRequest from "./pages/AdminRequest"
 import AcceptRequest from "./pages/AcceptRequest"
-
 import Cart from "./components/Cart"
 import { CheckSession } from "./services/Auth"
 import { useEffect, useState } from "react"
@@ -71,6 +70,8 @@ function App() {
               path="/registration/:registrationId"
               element={<AcceptRequest />}
             />
+            <Route path="/chat" element={<Chatbot />} /> 
+
           </Routes>
         </main>
       </div>
