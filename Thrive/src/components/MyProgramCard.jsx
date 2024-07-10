@@ -9,12 +9,12 @@ const MyProgramCard = ({ id, name, onDelete, onEdit, isAdmin, img }) => {
 
   return (
     <div className="card">
-      <Link to={`/program/${id}`}>
+     
         <div className="cardImg" id={id}>
           <img src={img} className="cardImg" />
         </div>
         <div className="programName">{name}</div>
-      </Link>
+     =
     </div>
   )
 }
