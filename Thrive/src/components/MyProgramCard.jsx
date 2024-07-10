@@ -9,12 +9,10 @@ const MyProgramCard = ({ id, name, onDelete, onEdit, isAdmin, img }) => {
 
   return (
     <div className="card">
-     
-        <div className="cardImg" id={id}>
-          <img src={img} className="cardImg" />
-        </div>
-        <div className="programName">{name}</div>
-     =
+      <div className="cardImg" id={id}>
+        <img src={img} className="cardImg" />
+      </div>
+      <div className="programName">{name}</div>
     </div>
   )
 }

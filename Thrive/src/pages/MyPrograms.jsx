@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react"
 import MyProgramCard from "../components/MyProgramCard"
-import axios from "axios"
-import { BASE_URL } from "../services/api"
-import { Link } from "react-router-dom"
+import Client from "../services/api"
 import { useParams } from "react-router-dom"
 
 const MyPrograms = () => {
@@ -12,16 +10,14 @@ const MyPrograms = () => {
   useEffect(() => {
     const getPrograms = async () => {
       try {
-        const res = await axios.get(
-          `${BASE_URL}/programs/${userId}/userprograms`
-        )
-        setPrograms(res.data)
+        const response = await Client.get(`programs/${userId}/userprograms`)
+        setPrograms(response.data)
       } catch (err) {
         console.log("Error fetching programs:", err)
       }
     }
     getPrograms()
-  }, [])
+  }, [userId])
 
   return (
     <div className="program-content">
