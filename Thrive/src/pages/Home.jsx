@@ -20,6 +20,7 @@ const Home = ({ user }) => {
     getReviews()
   }, [])
 
+  // console.log(`user ${JSON.stringify(user)}`)
   return (
     <div className="homepage">
       <div className="scrollable-container">
