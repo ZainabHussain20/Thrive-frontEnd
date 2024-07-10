@@ -1,11 +1,14 @@
 import { useEffect, useState } from "react"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import FetchReview from "../components/FetchReview"
 import Client from "../services/api"
+import Lottie from 'lottie-react'
+import animationData from '../assets/Animation - 1720515153102.json'
 
 const Home = () => {
   const [reviews, setReviews] = useState([])
   const userId = localStorage.getItem("userId")
+  const navigate = useNavigate()
 
   const getReviews = async () => {
     try {
@@ -19,6 +22,10 @@ const Home = () => {
   useEffect(() => {
     getReviews()
   }, [])
+
+  const handleLottieClick = () => {
+    navigate("/chat")
+  }
 
   return (
     <div className="homepage">
@@ -36,6 +43,9 @@ const Home = () => {
         </div>
       </div>
       <Link to={`/reviews/${userId}`}>ADD REVIEW</Link>
+      <div onClick={handleLottieClick} style={{ cursor: 'pointer' }}>
+        <Lottie animationData={animationData} style={{ width: 300, height: 300 }} />
+      </div>
     </div>
   )
 }
