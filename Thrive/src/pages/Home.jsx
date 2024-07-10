@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom"
 import FetchReview from "../components/FetchReview"
 import Client from "../services/api"
 import Lottie from 'lottie-react'
-import animationData from '../assets/Animation - 1720515153102.json'
+import animationData from '../assets/Animation.json'
 
 const Home = () => {
   const [reviews, setReviews] = useState([])
