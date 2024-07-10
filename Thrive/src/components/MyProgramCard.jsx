@@ -1,13 +1,20 @@
 import { Link } from "react-router-dom"
 
-const MyProgramCard = ({ id, name }) => {
+const MyProgramCard = ({ id, name, onDelete, onEdit, isAdmin, img }) => {
+  const handleDelete = () => {
+    if (window.confirm("Are you sure you want to delete this program?")) {
+      onDelete(id)
+    }
+  }
 
   return (
     <div className="card">
-          <Link to={`/registration/${id}`}>
-
-      <h3>{name}</h3>
-      </Link>
+     
+        <div className="cardImg" id={id}>
+          <img src={img} className="cardImg" />
+        </div>
+        <div className="programName">{name}</div>
+     =
     </div>
   )
 }

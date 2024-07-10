@@ -71,6 +71,13 @@ const SignIn = ({ setUser }) => {
             <div className="color"> Register Now!</div>
           </Link>
         </div>
+        {/* <div className="image-container">
+          <img
+            src="../../img/book.png"
+            class="corner-image"
+            alt="Corner Image"
+          ></img> */}
+        {/* </div> */}
       </div>
     </div>
   )
