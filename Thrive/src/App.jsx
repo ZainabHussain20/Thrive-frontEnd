@@ -2,9 +2,8 @@
 
 
 
-import MyRequest from "./pages/MyRequest"
-import AdminRequest from './components/AdminRequest'
-import MyRequest from './pages/MyRequest'
+// import AdminRequest from './components/AdminRequest'
+// import MyRequest from './pages/MyRequest'
 import { Route, Routes } from 'react-router'
 import './App.css'
 import Nav from './components/Nav'
@@ -69,12 +68,12 @@ function App() {
             <Route path="/program/:ProgramId" element={<ProgramDetail />} />
 
             <Route path="/Profile" element={<Profile />} />
-            <Route path="/MyRequest" element={<MyRequest />} />
+            {/* <Route path="/MyRequest" element={<MyRequest />} /> */}
             <Route path="/Profile/:userId/edit" element={<ProfileCard />} />
 
-            <Route path="/Request" element={<AdminRequest />} />
-            <Route path="/MyRequest" element={<MyRequest userId={user?._id} />} />
-            <Route path="/chat" element={<Chatbot />} /> 
+            {/* <Route path="/Request" element={<AdminRequest />} />
+            <Route path="/MyRequest" element={<MyRequest userId={user?._id} />} /> */}
+            {/* <Route path="/chat" element={<Chatbot />} />  */}
 
           </Routes>
         </main>
