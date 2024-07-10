@@ -25,7 +25,7 @@ const Nav = ({ user, handleLogOut }) => {
                 <Link to="/Programs">Programs</Link>
                 <Link to={`/programs/${userId}`}>My Program</Link>
                 <Link to={`/MyRequest/${userId}`}>My Request</Link>
-                <Link to="/Profile">Profile</Link>{" "}
+                <Link to={`/Profile/${userId}`}>Profile</Link>
                 {userId && (
                   <Link to={`/registration/${userId}/cart`}>Cart</Link>
                 )}

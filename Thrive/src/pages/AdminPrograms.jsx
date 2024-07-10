@@ -1,8 +1,7 @@
-import ProgramCard from '../components/ProgramCard'
-import EditProgramForm from '../components/EditProgramForm'
-import { useEffect, useState } from 'react'
-import axios from 'axios'
-import { BASE_URL } from '../services/api'
+import ProgramCard from "../components/ProgramCard"
+import EditProgramForm from "../components/EditProgramForm"
+import { useEffect, useState } from "react"
+import Client from "../services/api"
 
 const AdminPrograms = ({ user }) => {
   const [programs, setPrograms] = useState([])
@@ -11,10 +10,10 @@ const AdminPrograms = ({ user }) => {
   useEffect(() => {
     const getPrograms = async () => {
       try {
-        const res = await axios.get(`${BASE_URL}/programs`)
+        const res = await Client.get(`/programs`)
         setPrograms(res.data)
       } catch (err) {
-        console.log('Error fetching programs:', err)
+        console.log("Error fetching programs:", err)
       }
     }
     getPrograms()
@@ -22,10 +21,10 @@ const AdminPrograms = ({ user }) => {
 
   const handleDeleteProgram = async (programId) => {
     try {
-      await axios.delete(`${BASE_URL}/programs/delete/${programId}`)
+      await Client.delete(`/programs/delete/${programId}`)
       setPrograms(programs.filter((program) => program._id !== programId))
     } catch (err) {
-      console.log('Error deleting program:', err)
+      console.log("Error deleting program:", err)
     }
   }
 
@@ -45,7 +44,7 @@ const AdminPrograms = ({ user }) => {
     )
   }
 
-  const isAdmin = user && user.type === 'Admin'
+  const isAdmin = user && user.type === "Admin"
 
   return (
     <div className="child-content">

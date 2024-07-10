@@ -1,7 +1,6 @@
 import ProgramCard from "../components/ProgramCard"
 import { useEffect, useState } from "react"
-import axios from "axios"
-import { BASE_URL } from "../services/api"
+import Client from "../services/api"
 
 const Programs = () => {
   const [programs, setPrograms] = useState([])
@@ -9,7 +8,7 @@ const Programs = () => {
   useEffect(() => {
     const getPrograms = async () => {
       try {
-        const res = await axios.get(`${BASE_URL}/programs`)
+        const res = await Client.get(`/programs`)
 
         setPrograms(res.data)
       } catch (err) {

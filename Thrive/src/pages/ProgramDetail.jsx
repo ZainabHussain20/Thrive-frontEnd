@@ -1,8 +1,6 @@
 import { useEffect, useState } from "react"
-import { useParams } from "react-router-dom"
+import { useParams, useNavigate } from "react-router-dom" // Import useNavigate
 import Client from "../services/api"
-import axios from "axios"
-import { BASE_URL } from "../services/api"
 import marker from "../assets/marker.svg"
 import building from "../assets/building.svg"
 import road from "../assets/road.svg"
@@ -15,8 +13,8 @@ const ProgramDetails = () => {
   const [userRequests, setUserRequests] = useState([])
   const [requests, setRequests] = useState([])
   const [status, setStatus] = useState([])
-
-  let { programId } = useParams()
+  const { programId } = useParams()
+  const navigate = useNavigate()
 
   useEffect(() => {
     const getProgramDetails = async () => {
@@ -42,15 +40,16 @@ const ProgramDetails = () => {
 
       setUserRequests([...userRequests, newRequest])
 
-      const userId = localStorage.getItem("userId")
-      const newProgram = await axios.post(
-        `${BASE_URL}/registration/${userId}/${programId}`,
+      const newProgram = await Client.post(
+        `/registration/${userId}/${programId}`,
         newRequest
       )
       setRequests((prevRequests) => [...prevRequests, newProgram])
       setStatus({
         status: "pending",
       })
+
+      navigate(`/MyRequest/${userId}`)
     } catch (error) {
       console.error("Error registering for program:", error)
     }
@@ -73,44 +72,44 @@ const ProgramDetails = () => {
 
         <div className="info2 container">
           <div>
-            <img src={daily} className="icon" />
+            <img src={daily} className="icon" alt="daily" />
             {new Date(programDetails.start).toLocaleDateString()}
-            <img src={daily} className="icon" />
+            <img src={daily} className="icon" alt="daily" />
             {new Date(programDetails.end).toLocaleDateString()}
           </div>
 
           <div>
             <div>
-              <img src={daily} className="icon" />
+              <img src={daily} className="icon" alt="daily" />
               {programDetails.period}
             </div>
           </div>
           <div>
-            <img src={brand} className="icon" />
+            <img src={brand} className="icon" alt="brand" />
             {programDetails.price}
           </div>
           <div>
             <div>
-              <img src={leadership} className="icon" />
+              <img src={leadership} className="icon" alt="leadership" />
               {programDetails.gender}
             </div>
           </div>
           <div className="Location">
             <div>
               <div>
-                <img src={marker} />
+                <img src={marker} alt="marker" />
               </div>
               <div> {programDetails.location}</div>
             </div>
             <div>
               <div className="Loc">
-                <img src={road} />
+                <img src={road} alt="road" />
               </div>
               <div> {programDetails.block}</div>
             </div>
             <div>
               <div>
-                <img src={building} />
+                <img src={building} alt="building" />
               </div>
               <div>{programDetails.building}</div>
             </div>
