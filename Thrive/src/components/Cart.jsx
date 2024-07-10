@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react"
 import Client from "../services/api"
+import { BASE_URL } from "../services/api"
+import axios from "axios"
 
 const Cart = () => {
   const [cart, setCart] = useState({ totalPrice: 0, programs: [] })
@@ -35,26 +37,39 @@ const Cart = () => {
     }
   }, [userId])
 
-  if (!cart) {
-    return (
-      <div className="forms">
-        <p>No programs found in the cart.</p>
-      </div>
-    )
+  const handlePayNow = async () => {
+    try {
+      const paymentDetails = {
+        totalPrice: cart.totalPrice,
+        programs: cart.programs.map((program) => program._id),
+      }
+      const res = await axios.post(`${BASE_URL}/payment`, paymentDetails)
+
+      console.log("Payment successful:", res.data)
+
+      window.location.href = "/payment/success"
+    } catch (error) {
+      console.error("Error making payment:", error)
+    }
+  }
+
+  if (!cart || !cart.programs || cart.programs.length === 0) {
+    return <p>No programs found in the cart.</p>
   }
 
   return (
     <div>
-      <h2>Your Cart Details</h2>
-      <p>Total Price: ${cart.totalPrice}</p>
-      <h3>Programs in Cart:</h3>
-      <ul>
+      <h2 className="cart-containe">Your Cart Details</h2>
+      <h3 className="cartprogram">Programs in Cart:</h3>
+      <ul className="cartprogram">
         {cart.programs.map((program) => (
           <li key={program._id}>
             {program.name} - ${program.price}
           </li>
         ))}
       </ul>
+      <p className="totalprice">Total Price: ${cart.totalPrice}</p>
+      <button onClick={handlePayNow}>Pay Now</button>
     </div>
   )
 }
