@@ -1,22 +1,25 @@
-import { useState, useEffect } from "react"
-import Client from "../services/api"
+import { useState, useEffect } from 'react'
+import Client from '../services/api'
 
 const Reviews = () => {
-  const initialState = { content: "", rating: 0, program: "" }
+  const initialState = { content: '', rating: 0, program: '' }
   const [formValues, setFormValues] = useState(initialState)
-  const [userId, setUserId] = useState("")
+  const [userId, setUserId] = useState('')
   const [programs, setPrograms] = useState([])
 
   useEffect(() => {
-    const storedUserId = localStorage.getItem("userId")
+    const storedUserId = localStorage.getItem('userId')
     if (storedUserId) setUserId(storedUserId)
 
     const fetchPrograms = async () => {
       try {
-        const res = await Client.get("/programs")
-        setPrograms(res.data)
+        const res = await Client.get('/programs')
+        const completedPrograms = res.data.filter(
+          (program) => new Date(program.end) < new Date()
+        )
+        setPrograms(completedPrograms)
       } catch (error) {
-        console.error("Failed to fetch programs:", error)
+        console.error('Failed to fetch programs:', error)
       }
     }
 
