@@ -9,7 +9,7 @@ import daily from "../assets/daily.svg"
 import leadership from "../assets/leadership.svg"
 import clock from "../assets/clock.svg"
 
-const ProgramDetails = () => {
+const ProgramDetails = ({ user }) => {
   const [programDetails, setProgramDetails] = useState({})
   const [userRequests, setUserRequests] = useState([])
   const [requests, setRequests] = useState([])
@@ -78,12 +78,14 @@ const ProgramDetails = () => {
               allowFullScreen
             ></iframe>
           </div>
-          <button
-            onClick={handleRegistration}
-            className="programNameDetailButton"
-          >
-            Register
-          </button>
+          {user && user.type !== "Admin" && (
+            <button
+              onClick={handleRegistration}
+              className="programNameDetailButton"
+            >
+              Register
+            </button>
+          )}
         </div>
 
         <div className="info2 container">
@@ -112,11 +114,6 @@ const ProgramDetails = () => {
           <div>
             <img src={brand} className="icon" alt="brand" />
             {programDetails.price} BHD
-          </div>
-          <br />
-          <div>
-            <img src={leadership} className="icon" alt="leadership" />
-            {programDetails.gender}
           </div>
           <br />
 

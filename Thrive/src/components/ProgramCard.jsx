@@ -13,14 +13,22 @@ const ProgramCard = ({ id, name, onDelete, onEdit, isAdmin, img }) => {
         <div className="cardImg">
           <img src={img} className="cardImg" />
         </div>
-        <div className="programName">{name}</div>
+        <div className="programName">
+          <div> {name}</div>
+          <div>
+            {isAdmin && (
+              <>
+                <button onClick={handleDelete} className="AdminButton">
+                  Delete
+                </button>
+                <button onClick={() => onEdit(id)} className="AdminButton">
+                  Edit
+                </button>
+              </>
+            )}
+          </div>
+        </div>
       </Link>
-      {isAdmin && (
-        <>
-          <button onClick={handleDelete}>Delete</button>
-          <button onClick={() => onEdit(id)}>Edit</button>
-        </>
-      )}
     </div>
   )
 }
