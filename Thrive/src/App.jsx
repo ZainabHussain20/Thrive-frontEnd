@@ -16,6 +16,7 @@ import AddProgram from "./components/AddProgram"
 import MyRequest from "./pages/MyRequest"
 import AdminRequest from "./pages/AdminRequest"
 import AcceptRequest from "./pages/AcceptRequest"
+import MyPrograms from "./pages/MyPrograms"
 import Cart from "./components/Cart"
 import { CheckSession } from "./services/Auth"
 import { useEffect, useState } from "react"
@@ -58,7 +59,6 @@ function App() {
             />
             <Route path="/addProgram" element={<AddProgram />} />
             <Route path="/updatePassword" element={<UpdatePassword />} />
-
             <Route path="/reviews/:userId" element={<Reviews />} />
             <Route path="/registration/:userId/cart/" element={<Cart />} />
             <Route path="/program/:programId" element={<ProgramDetail />} />
@@ -70,8 +70,8 @@ function App() {
               path="/registration/:registrationId"
               element={<AcceptRequest />}
             />
-            <Route path="/chat" element={<Chatbot />} /> 
-
+            <Route path="/programs/:userId" element={<MyPrograms />} />
+            {/* <Route path="/chat" element={<Chatbot />} />  */}
           </Routes>
         </main>
       </div>

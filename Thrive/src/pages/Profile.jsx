@@ -50,7 +50,9 @@ const Profile = () => {
         </div>
         <div className="profile-item">
           <FaBirthdayCake />{" "}
-          <span className="profile-detail">{profile.birthDate}</span>
+          <span className="profile-detail">
+            {new Date(profile.birthDate).toLocaleDateString()}
+          </span>
         </div>
         <div className="profile-item">
           <FaIdCard /> <span className="profile-detail">{profile.cpr}</span>
@@ -59,7 +61,7 @@ const Profile = () => {
           <FaEnvelope /> <span className="profile-detail">{profile.email}</span>
         </div>
         <div className="profile-item">
-          <FaPhone />{" "}
+          <FaPhone />
           <span className="profile-detail">{profile.phoneNumber}</span>
         </div>
       </div>
