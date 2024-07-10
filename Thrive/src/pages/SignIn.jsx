@@ -71,13 +71,13 @@ const SignIn = ({ setUser }) => {
             <div className="color"> Register Now!</div>
           </Link>
         </div>
-        <div className="image-container">
+        {/* <div className="image-container">
           <img
-            src="https://images.rawpixel.com/image_png_social_portrait/cHJpdmF0ZS9zdGF0aWMvaW1hZ2VzL3dlYnNpdGUvMjAyMy0wOS9tb3Rhcm83X21pbmltYWxpc3RfaWxsdXN0cmF0aW9uX29mX2NoaWxkX3JlYWRpbmdfaXNvbGF0ZWRfb25fd2hfNzM1MWUxODEtYWI3ZC00MWVlLTlkMjYtODNjNzNjNTliMzlkLnBuZw.png"
+            src="../../img/book.png"
             class="corner-image"
             alt="Corner Image"
-          ></img>
-        </div>
+          ></img> */}
+        {/* </div> */}
       </div>
     </div>
   )

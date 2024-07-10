@@ -37,11 +37,19 @@ const Cart = () => {
     }
   }, [userId])
 
-  const handlePayNow = () => {
+  const handlePayNow = async () => {
     try {
-      const payNow = axios.push(`${BASE_URL}/Payment`, payNow)
+      const paymentDetails = {
+        totalPrice: cart.totalPrice,
+        programs: cart.programs.map((program) => program._id),
+      }
+      const res = await axios.post(`${BASE_URL}/payment`, paymentDetails)
+
+      console.log("Payment successful:", res.data)
+
+      window.location.href = "/payment/success"
     } catch (error) {
-      console.error("Error fetching payment details:", error)
+      console.error("Error making payment:", error)
     }
   }
 
@@ -51,16 +59,16 @@ const Cart = () => {
 
   return (
     <div>
-      <h2>Your Cart Details</h2>
-      <p>Total Price: ${cart.totalPrice}</p>
-      <h3>Programs in Cart:</h3>
-      <ul>
+      <h2 className="cart-containe">Your Cart Details</h2>
+      <h3 className="cartprogram">Programs in Cart:</h3>
+      <ul className="cartprogram">
         {cart.programs.map((program) => (
           <li key={program._id}>
             {program.name} - ${program.price}
           </li>
         ))}
       </ul>
+      <p className="totalprice">Total Price: ${cart.totalPrice}</p>
       <button onClick={handlePayNow}>Pay Now</button>
     </div>
   )
