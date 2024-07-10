@@ -1,15 +1,15 @@
-// import React from "react"
-// import ProgramRequest from "../components/ProgramsRequest"
+import React from "react"
+import ProgramRequest from "../components/ProgramsRequest"
 
-// const MyRequests = () => {
-//   const userRequests = []
+const MyRequests = () => {
+  const userRequests = []
 
-//   return (
-//     <div>
-//       <h1>My Requests</h1>
-//       <ProgramRequest userRequests={userRequests} />
-//     </div>
-//   )
-// }
+  return (
+    <div>
+      <h1>My Requests</h1>
+      <ProgramRequest userRequests={userRequests} />
+    </div>
+  )
+}
 
-// export default MyRequests
+export default MyRequests
