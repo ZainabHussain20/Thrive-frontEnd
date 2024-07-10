@@ -1,15 +1,18 @@
 import { useEffect, useState } from "react"
-import { Link } from "react-router-dom"
+import { Link , useNavigate } from "react-router-dom"
 import FetchReview from "../components/FetchReview"
 import Client from "../services/api"
+import Lottie from 'lottie-react'
+import animationData from '../assets/Animation.json'
 
-const Home = ({ user }) => {
+const Home = () => {
   const [reviews, setReviews] = useState([])
   const userId = localStorage.getItem("userId")
+  const navigate = useNavigate()
 
   const getReviews = async () => {
     try {
-      const res = await Client.get("/programs/reviews")
+      const res = await Client.get(`programs/reviews`)
       setReviews(res.data)
     } catch (error) {
       console.error("Failed to fetch reviews:", error)
@@ -20,11 +23,18 @@ const Home = ({ user }) => {
     getReviews()
   }, [])
 
-  // console.log(`user ${JSON.stringify(user)}`)
+  const handleLottieClick = () => {
+    navigate("/chat")
+  }
+
+
   return (
     <div className="homepage">
+      <div className="AddReveiw">
+        <Link to={`/reviews/${userId}`}>+</Link>
+      </div>
       <div className="scrollable-container">
-        <div className="child-content">
+        <div className="reviewForm">
           {reviews.map((review) => (
             <FetchReview
               key={review._id}
@@ -32,16 +42,16 @@ const Home = ({ user }) => {
               content={review.content}
               program={review.program}
               rating={review.rating}
-              user={review.user}
             />
           ))}
         </div>
+        
       </div>
-      {user && user.type !== "Admin" && (
-        <Link to={`/reviews/${userId}`} className="nav-links">
-          ADD REVIEW
-        </Link>
-      )}
+      <Link to={`/reviews/${userId}`}>ADD REVIEW</Link>
+      <div onClick={handleLottieClick} style={{ cursor: 'pointer' }}>
+        <Lottie animationData={animationData} style={{ width: 300, height: 300 }} />
+      </div>
+
     </div>
   )
 }

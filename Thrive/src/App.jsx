@@ -1,9 +1,5 @@
 import { Route, Routes } from "react-router"
 import "./App.css"
-
-import MyRequest from "./pages/MyRequest"
-// import AdminRequest from "./components/AdminRequest"
-
 import Nav from "./components/Nav"
 import About from "./pages/About"
 import Register from "./pages/Register"
@@ -17,8 +13,12 @@ import ProfileCard from "./components/ProfileCard"
 import Reviews from "./components/Reviews"
 import AdminPrograms from "./pages/AdminPrograms"
 import AddProgram from "./components/AddProgram"
-
+import MyRequest from "./pages/MyRequest"
+import AdminRequest from "./pages/AdminRequest"
+import AcceptRequest from "./pages/AcceptRequest"
+import MyPrograms from "./pages/MyPrograms"
 import Cart from "./components/Cart"
+import Chatbot from "./components/chat"
 import { CheckSession } from "./services/Auth"
 import { useEffect, useState } from "react"
 
@@ -50,7 +50,7 @@ function App() {
         <main>
           <Routes>
             <Route path="/about" element={<About />} />
-            <Route path="/" element={<Home user={user} />} />
+            <Route path="/" element={<Home />} />
             <Route path="/Signin" element={<SignIn setUser={setUser} />} />
             <Route path="/Register" element={<Register />} />
             <Route path="/Programs" element={<Program />} />
@@ -64,16 +64,17 @@ function App() {
             <Route path="/registration/:userId/cart/" element={<Cart />} />
             <Route path="/program/:programId" element={<ProgramDetail />} />
             <Route path="/Profile" element={<Profile />} />
-            {/* <Route path="/MyRequest" element={<MyRequest />} /> */}
-
+            <Route path="/MyRequest/:userId" element={<MyRequest />} />
             <Route path="/Profile/:userId/edit" element={<ProfileCard />} />
-
-            {/* <Route path="/Request" element={<AdminRequest />} /> */}
+            <Route path="/registration" element={<AdminRequest />} />
             <Route
-              path="/MyRequest"
-              element={<MyRequest userId={user?._id} />}
+              path="/registration/:registrationId"
+              element={<AcceptRequest />}
             />
-            {/* <Route path="/chat" element={<Chatbot />} /> */}
+            <Route path="/programs/:userId" element={<MyPrograms />} />
+            {/* <Route path="/chat" element={<Chatbot />} />  */}
+            <Route path="/chat" element={<Chatbot />} /> 
+            
           </Routes>
         </main>
       </div>

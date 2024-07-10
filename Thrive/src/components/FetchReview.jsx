@@ -1,10 +1,11 @@
-const FetchReview = ({ id, content, rating, program, user }) => {
+const FetchReview = ({ id, content, rating, program }) => {
   return (
-    <div className="card" id={id}>
-      <div>user : {user.userName}</div>
-      <div>review : {content}</div>
-      <div>rating : {rating}</div>
-      <div>program : {program}</div>
+    <div className="reviewCard" id={id}>
+      <div className="reviewUserInfo">
+        <div>{rating}</div>
+        <div>program :{program}</div>
+      </div>
+      <div className="reviewContent">{content}</div>
     </div>
   )
 }
