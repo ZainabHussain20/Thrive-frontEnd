@@ -22,8 +22,11 @@ const Home = () => {
 
   return (
     <div className="homepage">
+      <div className="AddReveiw">
+        <Link to={`/reviews/${userId}`}>+</Link>
+      </div>
       <div className="scrollable-container">
-        <div className="child-content">
+        <div className="reviewForm">
           {reviews.map((review) => (
             <FetchReview
               key={review._id}
@@ -35,7 +38,6 @@ const Home = () => {
           ))}
         </div>
       </div>
-      <Link to={`/reviews/${userId}`}>ADD REVIEW</Link>
     </div>
   )
 }

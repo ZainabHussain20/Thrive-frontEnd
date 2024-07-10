@@ -78,18 +78,61 @@ button:hover:enabled {
   color: #555;
 }
 
-.child-content {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  margin-left: 250px;
-  margin-top: 200px;
+.scrollable-container {
+  min-height: 400px;
+  max-height: 400px;
+  max-width: 400px;
+  overflow-y: auto;
 }
 
-.scrollable-container {
-  overflow-y: auto;
-  max-height: 80vh;
-  width: 100%;
+.homepage {
+  max-width: 400px;
+  margin-left: 800px;
+  border: 1 solid white;
+}
+
+.reviewForm {
+  border-radius: 2px;
+  /* background-color: #dfe1ed65; */
+  padding: 15px;
+}
+
+.reviewCard {
+  border-radius: 10px;
+  margin-top: 10px;
+  margin-bottom: 7px;
+}
+
+.reviewUserInfo {
+  display: flex;
+  background-color: rgba(97, 187, 205, 0.338);
+  padding: 4px;
+  justify-content: space-around;
+}
+
+.reviewContent {
+  background-color: rgba(187, 191, 213, 0.849);
+  min-height: 30px;
+  max-height: 30px;
+  padding: 20px;
+}
+
+.AddReveiw {
+  text-align: center;
+  color: black;
+  width: 50px;
+  margin-left: 330px;
+}
+.AddReveiw a {
+  text-decoration: none;
+  font-size: 30px;
+  font-weight: bold;
+  color: black;
+}
+
+.AddReveiw:hover {
+  transform: scale(0.98);
+  font-weight: bold;
 }
 
 .card {
