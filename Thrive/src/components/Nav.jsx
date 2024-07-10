@@ -24,6 +24,7 @@ const Nav = ({ user, handleLogOut }) => {
               <>
                 <Link to="/Programs">Programs</Link>
                 <Link to={`/programs/${userId}`}>My Program</Link>
+                <Link to={`/MyRequest/${userId}`}>My Request</Link>
                 <Link to="/Profile">Profile</Link>
 
                 <Link to="/chat">Chat</Link>
