@@ -73,8 +73,7 @@ function App() {
             />
             <Route path="/programs/:userId" element={<MyPrograms />} />
             {/* <Route path="/chat" element={<Chatbot />} />  */}
-            <Route path="/chat" element={<Chatbot />} /> 
-            
+            <Route path="/chat" element={<Chatbot />} />
           </Routes>
         </main>
       </div>
