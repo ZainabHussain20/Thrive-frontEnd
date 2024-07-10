@@ -47,7 +47,7 @@ const AdminPrograms = ({ user }) => {
   const isAdmin = user && user.type === "Admin"
 
   return (
-    <div className="child-content">
+    <div className="program-content">
       {editingProgram ? (
         <EditProgramForm
           programId={editingProgram}
@@ -59,6 +59,7 @@ const AdminPrograms = ({ user }) => {
           <ProgramCard
             key={program._id}
             id={program._id}
+            img={program.img}
             name={program.name}
             onDelete={handleDeleteProgram}
             onEdit={handleEditProgram}

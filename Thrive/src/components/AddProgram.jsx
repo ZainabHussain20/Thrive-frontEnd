@@ -9,13 +9,11 @@ const AddProgram = () => {
     time: "",
     period: [],
     description: "",
-    limit: 0,
-    gender: "",
     price: 0,
     location: "",
     block: "",
     building: "",
-    line: "",
+    img: "",
   }
 
   const [formValues, setFormValues] = useState(initialState)
@@ -117,11 +115,11 @@ const AddProgram = () => {
           />
         </div>
         <div>
-          <label>Line</label>
+          <label>img</label>
           <input
             type="text"
-            name="line"
-            value={formValues.line}
+            name="img"
+            value={formValues.img}
             onChange={handleChange}
           />
         </div>

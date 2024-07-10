@@ -91,6 +91,9 @@ button:hover:enabled {
   justify-content: center;
   align-items: center;
 }
+.nav {
+  margin: 20px 10px;
+}
 
 .nav-links a {
   color: black;
@@ -229,8 +232,13 @@ button:hover:enabled {
   text-align: center;
   width: 600px;
   border-radius: 3px;
+  display: flex;
 }
 
+.AdminButton {
+  margin-right: 4px;
+  background-color: #525a5d1e;
+}
 .programNameDetailButton {
   height: 40px;
   background-color: #525a5d77;
@@ -360,4 +368,8 @@ button:hover:enabled {
 
 input {
   margin-top: 3px;
+}
+
+.conflict {
+  color: red;
 }

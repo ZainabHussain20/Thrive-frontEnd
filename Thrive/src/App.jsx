@@ -24,7 +24,7 @@ import { CheckSession } from "./services/Auth"
 import { useEffect, useState } from "react"
 
 function App() {
-  const [user, setUser] = useState(null)
+  const [user, setUser] = useState()
 
   const handleLogOut = () => {
     setUser(null)
@@ -51,7 +51,7 @@ function App() {
         <main>
           <Routes>
             <Route path="/about" element={<About />} />
-            <Route path="/" element={<Home />} />
+            <Route path="/" element={<Home user={user} />} />
             <Route path="/Signin" element={<SignIn setUser={setUser} />} />
             <Route path="/Register" element={<Register />} />
             <Route path="/Programs" element={<Program />} />
@@ -63,7 +63,10 @@ function App() {
             <Route path="/updatePassword" element={<UpdatePassword />} />
             <Route path="/reviews/:userId" element={<Reviews />} />
             <Route path="/registration/:userId/cart/" element={<Cart />} />
-            <Route path="/program/:programId" element={<ProgramDetail />} />
+            <Route
+              path="/program/:programId"
+              element={<ProgramDetail user={user} />}
+            />
             <Route path="/Profile/:userId" element={<Profile />} />
             <Route path="/MyRequest/:userId" element={<MyRequest />} />
             <Route path="/Profile/:userId/edit" element={<ProfileCard />} />
@@ -73,9 +76,7 @@ function App() {
               element={<AcceptRequest />}
             />
             <Route path="/programs/:userId" element={<MyPrograms />} />
-            {/* <Route path="/chat" element={<Chatbot />} />  */}
             <Route path="/payment" element={<Payment />} />
-
             <Route path="/chat" element={<Chatbot />} />
           </Routes>
         </main>
