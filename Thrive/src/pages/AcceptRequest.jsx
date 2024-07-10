@@ -21,10 +21,13 @@ const AcceptRequest = () => {
         )
         const data = response.data
         setFormValues({
-          // program: data.program.name,
+          programName: data.program.name,
           program: data.program._id,
-          // user: data.user.firstName+" "+data.user.lastName ,
+
+          // program: data.program._id,
           user: data.user._id ,
+          userName: data.user.firstName+" "+data.user.lastName ,
+          // user: data.user._id ,
           state: data.state,
         })
         console.log(data);
@@ -70,7 +73,7 @@ setConflict(conflictProgram)
             name="user"
             type="text"
             placeholder="User Name"
-            value={formValues.user}
+            value={formValues.userName}
             readOnly
             className="inputField"
           />
@@ -83,7 +86,7 @@ setConflict(conflictProgram)
             name="program"
             type="text"
             placeholder="Program"
-            value={formValues.program}
+            value={formValues.programName}
             readOnly
             className="inputField"
           />
