@@ -1,8 +1,9 @@
 import { Route, Routes } from "react-router"
 import "./App.css"
 
-import AdminRequest from "./components/AdminRequest"
 import MyRequest from "./pages/MyRequest"
+// import AdminRequest from "./components/AdminRequest"
+
 import Nav from "./components/Nav"
 import About from "./pages/About"
 import Register from "./pages/Register"
@@ -63,15 +64,16 @@ function App() {
             <Route path="/registration/:userId/cart/" element={<Cart />} />
             <Route path="/program/:programId" element={<ProgramDetail />} />
             <Route path="/Profile" element={<Profile />} />
-            <Route path="/MyRequest" element={<MyRequest />} />
+            {/* <Route path="/MyRequest" element={<MyRequest />} /> */}
+
             <Route path="/Profile/:userId/edit" element={<ProfileCard />} />
 
-            <Route path="/Request" element={<AdminRequest />} />
+            {/* <Route path="/Request" element={<AdminRequest />} /> */}
             <Route
               path="/MyRequest"
               element={<MyRequest userId={user?._id} />}
             />
-            <Route path="/chat" element={<Chatbot />} />
+            {/* <Route path="/chat" element={<Chatbot />} /> */}
           </Routes>
         </main>
       </div>

@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react"
 import Client from "../services/api"
+import { BASE_URL } from "../services/api"
+import axios from "axios"
 
 const Cart = () => {
   const [cart, setCart] = useState({ totalPrice: 0, programs: [] })
@@ -35,12 +37,25 @@ const Cart = () => {
     }
   }, [userId])
 
+<<<<<<< HEAD
   if (!cart) {
     return (
       <div className="forms">
         <p>No programs found in the cart.</p>
       </div>
     )
+=======
+  const handlePayNow = () => {
+    try {
+      const payNow = axios.push(`${BASE_URL}/Payment`, payNow)
+    } catch (error) {
+      console.error("Error fetching payment details:", error)
+    }
+  }
+
+  if (!cart || !cart.programs || cart.programs.length === 0) {
+    return <p>No programs found in the cart.</p>
+>>>>>>> 8bcf8d7 (pull the cart work)
   }
 
   return (
@@ -55,6 +70,7 @@ const Cart = () => {
           </li>
         ))}
       </ul>
+      <button onClick={handlePayNow}>Pay Now</button>
     </div>
   )
 }
