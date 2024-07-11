@@ -35,6 +35,7 @@ const Nav = ({ user, handleLogOut }) => {
             </>
           ) : (
             <>
+              <Link to="/Programs">Programs</Link>
               <Link to="/About">About Us</Link>
               <Link to="/signin">Sign In</Link>
             </>

@@ -1,10 +1,12 @@
 import "../App.css"
 import { useState, useEffect } from "react"
 import Client from "../services/api"
-import { useParams } from "react-router-dom"
+import { useParams, useNavigate } from "react-router-dom"
 
 const AcceptRequest = () => {
   const { registrationId } = useParams()
+  const navigate = useNavigate()
+
   const initialState = {
     program: "",
     user: "",
@@ -54,6 +56,7 @@ const AcceptRequest = () => {
       const updatedUser = { ...formValues }
       await Client.put(`/registration/${registrationId}`, updatedUser)
       setFormValues(initialState)
+      navigate("/registration")
     } catch (error) {
       console.error("Error updating user:", error)
     }
@@ -88,7 +91,7 @@ const AcceptRequest = () => {
             className="inputField"
           />
         </div>
-        <div className="input-wrapper">
+        <div className="input-wrapper conflict">
           <label htmlFor="conflict" className="label">
             {conflict ? "Conflict" : "No Conflict"}
           </label>
