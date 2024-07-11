@@ -9,8 +9,9 @@ const MyProgramCard = ({ id, name, onDelete, onEdit, isAdmin, img }) => {
     <div className="card">
       <div className="cardImg" id={id}>
         <img src={img} className="cardImg" />
+        <h3> {name}</h3>
       </div>
-      <div className="programName">{name}</div>
+     
     </div>
   )
 }
