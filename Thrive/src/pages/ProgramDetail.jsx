@@ -1,12 +1,10 @@
 import { useEffect, useState } from "react"
 import { useParams, useNavigate } from "react-router-dom"
 import Client from "../services/api"
-import marker from "../assets/marker.svg"
 import building from "../assets/building.svg"
 import road from "../assets/road.svg"
 import brand from "../assets/brand.svg"
 import daily from "../assets/daily.svg"
-import leadership from "../assets/leadership.svg"
 import clock from "../assets/clock.svg"
 
 const ProgramDetails = ({ user }) => {
@@ -42,7 +40,7 @@ const ProgramDetails = ({ user }) => {
       setUserRequests([...userRequests, newRequest])
 
       const newProgram = await Client.post(
-        `/registration/${userId}/${programId}`,
+        `/registration/${user.id}/${programId}`,
         newRequest
       )
       setRequests((prevRequests) => [...prevRequests, newProgram])
@@ -50,7 +48,7 @@ const ProgramDetails = ({ user }) => {
         status: "pending",
       })
 
-      navigate(`/MyRequest/${userId}`)
+      navigate(`/MyRequest/${user.id}`)
     } catch (error) {
       console.error("Error registering for program:", error)
     }

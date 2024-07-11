@@ -43,6 +43,7 @@ const EditProgramForm = ({ programId, onClose, onUpdate }) => {
       <form onSubmit={handleSubmit}>
         <div>
           <label>Description:</label>
+          <br />
           <input
             type="text"
             name="description"
