@@ -11,13 +11,15 @@ body {
   font-style: normal;
   max-width: 100%;
   max-height: 100%;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
 }
 
 .aboutText {
   text-align: justify;
 }
 .forms {
-  max-width: 400px;
+  max-width: 600px;
+  min-width: 600px;
   margin: 20px auto;
   padding: 20px;
   background-color: #f0f0f0;
@@ -90,6 +92,9 @@ button:hover:enabled {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.nav {
+  margin: 20px 10px;
 }
 
 .nav-links a {
@@ -173,10 +178,8 @@ button:hover:enabled {
 .card {
   border-radius: 10px;
   min-width: 200px;
-  min-height: 200px;
   max-width: 200px;
-  max-height: 200px;
-  flex: 1 0 30%; /* Allow the card to grow and shrink but maintain 30% of the container width */
+  text-align: center;
 }
 
 .program-card {
@@ -225,12 +228,17 @@ button:hover:enabled {
 }
 
 .programNameDetail {
-  background-color: #525a5d77;
   text-align: center;
+  align-items: center;
   width: 600px;
   border-radius: 3px;
+  display: flex;
 }
 
+.AdminButton {
+  margin-right: 4px;
+  background-color: #525a5d1e;
+}
 .programNameDetailButton {
   height: 40px;
   background-color: #525a5d77;
@@ -360,4 +368,30 @@ button:hover:enabled {
 
 input {
   margin-top: 3px;
+}
+
+.conflict {
+  color: red;
+}
+
+.AdminCardRe {
+  background-color: #f9f9f982;
+  border-radius: 4px;
+  padding: 30px;
+  text-align: center;
+  color: black;
+}
+
+.AdminCardRe a {
+  text-decoration: none;
+  color: black;
+}
+
+.AdminCardRe:hover {
+  transform: scale(0.98);
+  font-weight: bold;
+}
+
+textarea {
+  width: 390px;
 }

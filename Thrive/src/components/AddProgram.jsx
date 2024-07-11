@@ -1,7 +1,10 @@
 import React, { useState } from "react"
 import Client from "../services/api"
+import { useParams, useNavigate } from "react-router-dom"
 
 const AddProgram = () => {
+  const navigate = useNavigate()
+
   const initialState = {
     name: "",
     start: "",
@@ -9,13 +12,11 @@ const AddProgram = () => {
     time: "",
     period: [],
     description: "",
-    limit: 0,
-    gender: "",
     price: 0,
     location: "",
     block: "",
     building: "",
-    line: "",
+    img: "",
   }
 
   const [formValues, setFormValues] = useState(initialState)
@@ -37,11 +38,10 @@ const AddProgram = () => {
     e.preventDefault()
     try {
       await Client.post("/programs/addProgram", formValues)
-      alert("Program added successfully!")
       setFormValues(initialState)
+      navigate("/programs")
     } catch (error) {
       console.error("Failed to add program:", error)
-      alert("Failed to add program. Please try again.")
     }
   }
 
@@ -117,11 +117,11 @@ const AddProgram = () => {
           />
         </div>
         <div>
-          <label>Line</label>
+          <label>img</label>
           <input
             type="text"
-            name="line"
-            value={formValues.line}
+            name="img"
+            value={formValues.img}
             onChange={handleChange}
           />
         </div>
@@ -159,6 +159,7 @@ const AddProgram = () => {
         </div>
         <div>
           <label>Description</label>
+          <br />
           <textarea
             name="description"
             value={formValues.description}

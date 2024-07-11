@@ -1,14 +1,20 @@
 import React from "react"
 import { Link } from "react-router-dom"
 
-const AdminRequestCard = ({ id,  userName, programName }) => {
+const AdminRequestCard = ({ id, userName, programName }) => {
   return (
-    <Link to={`/registration/${id}`}>
-      <div className="admin-request-card" id={id}>
-      <p>User: {userName} - program: {programName}</p>
-      </div>
-    </Link>
+    <div className="AdminCardRe" id={id}>
+      <Link to={`/registration/${id}`}>
+        <h4>User: {userName}</h4>
+        <h4>Program: {programName}</h4>
+      </Link>
+    </div>
   )
 }
 
 export default AdminRequestCard
+
+
+
+
+

@@ -1,10 +1,12 @@
 import "../App.css"
 import { useState, useEffect } from "react"
 import Client from "../services/api"
-import { useParams } from "react-router-dom"
+import { useParams, useNavigate } from "react-router-dom"
 
 const AcceptRequest = () => {
   const { registrationId } = useParams()
+  const navigate = useNavigate()
+
   const initialState = {
     program: "",
     user: "",
@@ -23,11 +25,8 @@ const AcceptRequest = () => {
         setFormValues({
           programName: data.program.name,
           program: data.program._id,
-
-          // program: data.program._id,
           user: data.user._id,
           userName: data.user.firstName + " " + data.user.lastName,
-          // user: data.user._id ,
           state: data.state,
         })
         console.log(data)
@@ -57,6 +56,7 @@ const AcceptRequest = () => {
       const updatedUser = { ...formValues }
       await Client.put(`/registration/${registrationId}`, updatedUser)
       setFormValues(initialState)
+      navigate("/registration")
     } catch (error) {
       console.error("Error updating user:", error)
     }
@@ -91,26 +91,25 @@ const AcceptRequest = () => {
             className="inputField"
           />
         </div>
+        <div className="input-wrapper conflict">
+          <label htmlFor="conflict" className="label">
+            {conflict ? "Conflict" : "No Conflict"}
+          </label>
+        </div>
         <div className="input-wrapper">
           <label htmlFor="state" className="label">
             State
           </label>
-          <input
+          <select
             name="state"
-            type="text"
-            placeholder="State"
             value={formValues.state}
             onChange={handleChange}
             className="inputField"
-          />
-        </div>
-        <div className="input-wrapper">
-          <label htmlFor="conflict" className="label">
-            Conflict
-          </label>
-          <label htmlFor="conflict" className="label">
-            {conflict ? "conflict" : "No conflict"}
-          </label>
+          >
+            <option value="">Select State</option>
+            <option value="accept">Accept</option>
+            <option value="rejected">Reject</option>
+          </select>
         </div>
         <button>Save State</button>
       </form>

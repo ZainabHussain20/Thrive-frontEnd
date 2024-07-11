@@ -6,11 +6,14 @@ import Lottie from "lottie-react"
 import animationData from "../assets/Animation.json"
 import Chatbot from "../components/chat"
 
+
 const Home = () => {
   const [reviews, setReviews] = useState([]);
   const userId = localStorage.getItem("userId");
   const navigate = useNavigate();
   const [showChat, setShowChat] = useState(false);
+
+
 
   const getReviews = async () => {
     try {
@@ -32,9 +35,13 @@ const Home = () => {
   return (
     <div className="home">
       <div className="scrollable-container">
-        <div className="AddReview">
-          <Link to={`/reviews/${userId}`}>+</Link>
-        </div>
+
+        {user && user.type !== "Admin" && (
+          <div className="AddReveiw">
+            <Link to={`/reviews/${userId}`}>+</Link>
+          </div>
+        )}
+
         <div className="reviewForm">
           {reviews.map((review) => (
             <FetchReview
@@ -43,6 +50,7 @@ const Home = () => {
               content={review.content}
               program={review.program}
               rating={review.rating}
+              user={review.user}
             />
           ))}
         </div>

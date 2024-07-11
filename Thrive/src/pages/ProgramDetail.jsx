@@ -1,15 +1,13 @@
 import { useEffect, useState } from "react"
 import { useParams, useNavigate } from "react-router-dom"
 import Client from "../services/api"
-import marker from "../assets/marker.svg"
 import building from "../assets/building.svg"
 import road from "../assets/road.svg"
 import brand from "../assets/brand.svg"
 import daily from "../assets/daily.svg"
-import leadership from "../assets/leadership.svg"
 import clock from "../assets/clock.svg"
 
-const ProgramDetails = () => {
+const ProgramDetails = ({ user }) => {
   const [programDetails, setProgramDetails] = useState({})
   const [userRequests, setUserRequests] = useState([])
   const [requests, setRequests] = useState([])
@@ -42,7 +40,7 @@ const ProgramDetails = () => {
       setUserRequests([...userRequests, newRequest])
 
       const newProgram = await Client.post(
-        `/registration/${userId}/${programId}`,
+        `/registration/${user.id}/${programId}`,
         newRequest
       )
       setRequests((prevRequests) => [...prevRequests, newProgram])
@@ -50,7 +48,7 @@ const ProgramDetails = () => {
         status: "pending",
       })
 
-      navigate(`/MyRequest/${userId}`)
+      navigate(`/MyRequest/${user.id}`)
     } catch (error) {
       console.error("Error registering for program:", error)
     }
@@ -78,12 +76,14 @@ const ProgramDetails = () => {
               allowFullScreen
             ></iframe>
           </div>
-          <button
-            onClick={handleRegistration}
-            className="programNameDetailButton"
-          >
-            Register
-          </button>
+          {user && user.type !== "Admin" && (
+            <button
+              onClick={handleRegistration}
+              className="programNameDetailButton"
+            >
+              Register
+            </button>
+          )}
         </div>
 
         <div className="info2 container">
@@ -112,11 +112,6 @@ const ProgramDetails = () => {
           <div>
             <img src={brand} className="icon" alt="brand" />
             {programDetails.price} BHD
-          </div>
-          <br />
-          <div>
-            <img src={leadership} className="icon" alt="leadership" />
-            {programDetails.gender}
           </div>
           <br />
 

@@ -1,21 +1,19 @@
-import { useState, useEffect } from 'react'
-import axios from 'axios'
-import { BASE_URL } from '../services/api'
+import { useState, useEffect } from "react"
+import Client from "../services/api"
 
 const EditProgramForm = ({ programId, onClose, onUpdate }) => {
   const [program, setProgram] = useState({
-    description: '',
-    gender: '',
-    price: ''
+    description: "",
+    price: "",
   })
 
   useEffect(() => {
     const fetchProgram = async () => {
       try {
-        const res = await axios.get(`${BASE_URL}/programs/${programId}`)
+        const res = await Client.get(`/programs/${programId}`)
         setProgram(res.data)
       } catch (err) {
-        console.log('Error fetching program:', err)
+        console.log("Error fetching program:", err)
       }
     }
     fetchProgram()
@@ -25,21 +23,18 @@ const EditProgramForm = ({ programId, onClose, onUpdate }) => {
     const { name, value } = e.target
     setProgram((prevProgram) => ({
       ...prevProgram,
-      [name]: value
+      [name]: value,
     }))
   }
 
   const handleSubmit = async (e) => {
     e.preventDefault()
     try {
-      const res = await axios.put(
-        `${BASE_URL}/programs/update/${programId}`,
-        program
-      )
+      const res = await Client.put(`/programs/update/${programId}`, program)
       onUpdate(res.data)
       onClose()
     } catch (err) {
-      console.log('Error updating program:', err)
+      console.log("Error updating program:", err)
     }
   }
 
@@ -48,21 +43,13 @@ const EditProgramForm = ({ programId, onClose, onUpdate }) => {
       <form onSubmit={handleSubmit}>
         <div>
           <label>Description:</label>
+          <br />
           <input
             type="text"
             name="description"
             value={program.description}
             onChange={handleChange}
           />
-        </div>
-        <div>
-          <label>Gender:</label>
-          <select name="gender" value={program.gender} onChange={handleChange}>
-            <option value="">Select Gender</option>
-            <option value="Male">Male</option>
-            <option value="Female">Female</option>
-            <option value="Mixed">Mixed</option>
-          </select>
         </div>
         <div>
           <label>Price:</label>

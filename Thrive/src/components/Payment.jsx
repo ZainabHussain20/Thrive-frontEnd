@@ -1,4 +1,6 @@
 import React, { useState } from "react"
+import { useNavigate } from "react-router-dom"
+
 import Client from "../services/api"
 
 const Payment = () => {
@@ -6,12 +8,13 @@ const Payment = () => {
   const [expirationDate, setExpirationDate] = useState("")
   const [cvv, setCvv] = useState("")
   const [nameOnCard, setNameOnCard] = useState("")
+  const navigate = useNavigate()
 
   const handleSubmit = async (e) => {
     e.preventDefault()
     try {
       const response = await Client.post(`/registration/receipt`)
-      console.log(response.data)
+      navigate("/")
     } catch (error) {
       console.error("Error submitting payment:", error)
     }

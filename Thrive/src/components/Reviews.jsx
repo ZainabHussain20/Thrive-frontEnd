@@ -1,43 +1,46 @@
-import { useState, useEffect } from 'react'
-import Client from '../services/api'
+import React, { useState, useEffect } from "react"
+import Client from "../services/api"
+import Rating from "react-rating-stars-component" // Import the rating component
 
 const Reviews = () => {
-  const initialState = { content: '', rating: 0, program: '' }
+  const initialState = { content: "", rating: 0, program: "" }
   const [formValues, setFormValues] = useState(initialState)
-  const [userId, setUserId] = useState('')
+  const [userId, setUserId] = useState("")
   const [programs, setPrograms] = useState([])
 
   useEffect(() => {
-    const storedUserId = localStorage.getItem('userId')
-    if (storedUserId) setUserId(storedUserId)
-
-    const fetchPrograms = async () => {
-      try {
-        const res = await Client.get('/programs')
-        const completedPrograms = res.data.filter(
-          (program) => new Date(program.end) < new Date()
-        )
-        setPrograms(completedPrograms)
-      } catch (error) {
-        console.error('Failed to fetch programs:', error)
-      }
+    const storedUserId = localStorage.getItem("userId")
+    if (storedUserId) {
+      setUserId(storedUserId)
+      fetchPrograms(storedUserId) // Fetch programs with stored user ID
     }
+  }, [userId]) // Add userId as a dependency
 
-    fetchPrograms()
-  }, [])
+  const fetchPrograms = async (userId) => {
+    try {
+      const res = await Client.get(`/programs/${userId}/userprograms`)
+      setPrograms(res.data) // Set programs directly from response data
+    } catch (error) {
+      console.error("Failed to fetch programs:", error)
+    }
+  }
 
   const handleChange = (e) => {
     setFormValues({ ...formValues, [e.target.name]: e.target.value })
   }
 
-  const handleRatingChange = (e) => {
-    setFormValues({ ...formValues, rating: e.target.value })
+  const handleRatingChange = (newRating) => {
+    setFormValues({ ...formValues, rating: newRating })
   }
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    await Client.post(`/programs/reviews/${userId}`, formValues)
-    setFormValues(initialState)
+    try {
+      await Client.post(`/programs/reviews/${userId}`, formValues)
+      setFormValues(initialState)
+    } catch (error) {
+      console.error("Failed to submit review:", error)
+    }
   }
 
   return (
@@ -54,11 +57,13 @@ const Reviews = () => {
         </div>
         <div>
           <label>Rating</label>
-          <input
-            type="number"
+          <Rating
             name="rating"
+            count={5}
             value={formValues.rating}
             onChange={handleRatingChange}
+            size={24}
+            activeColor="#ffd700"
           />
         </div>
         <div>

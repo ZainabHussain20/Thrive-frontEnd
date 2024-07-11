@@ -18,15 +18,23 @@ const AdminRequest = () => {
   }, [])
 
   return (
-    <div className="forms">
+    <div className="program-content">
       {registrations.length > 0 ? (
         registrations.map((registration) => (
           <AdminRequestCard
             key={registration._id}
             id={registration._id}
             user={registration.user}
-            userName={`${registration.user.firstName} ${registration.user.lastName}`}
-            programName={registration.program.name}
+            userName={
+              registration.user
+                ? `${registration.user.firstName} ${registration.user.lastName}`
+                : "No user info"
+            }
+            programName={
+              registration.program
+                ? registration.program.name
+                : "No program info"
+            }
           />
         ))
       ) : (
