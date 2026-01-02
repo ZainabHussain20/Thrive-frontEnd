@@ -52,6 +52,7 @@
 - [ ] Add owner userType, And make him add his own institutes and programs
 - [ ] Creating free educational courses
 
+**Live Site:** [Thrive](https://thrivee.surge.sh)
 ---
 
 ### **_Credits_**
